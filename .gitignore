@@ -1,0 +1,38 @@
+# OS
+.DS_Store
+Thumbs.db
+Desktop.ini
+
+# IDE
+.vscode/
+.idea/
+
+# Logs
+*.log
+
+# Temp
+tmp/
+temp/
+.cache/
+
+# Build
+dist/
+build/
+
+# Dependencies
+node_modules/
+
+# Environment
+.env
+
+# Archives
+*.zip
+*.tar
+*.7z
+
+# Backups
+*.bak
+
+# Optional Anki Exports
+*.apkg
+*.colpkg
