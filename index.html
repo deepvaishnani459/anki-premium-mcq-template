@@ -1,0 +1,1442 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>🏆 Premium Anki MCQ Template — Award Edition</title>
+  <style>
+/* ═══════════════════════════════════════════════════════════════════════
+   PAGE WRAPPER CHROME (this wraps the whole reference doc)
+═══════════════════════════════════════════════════════════════════════ */
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+
+:root {
+  --page-bg:     #080b14;
+  --page-surf:   #0e1220;
+  --page-surf2:  #151a2e;
+  --page-border: #1f2744;
+  --page-accent: #6c63ff;
+  --page-text:   #dde2f5;
+  --page-muted:  #6a728f;
+  --page-green:  #00d084;
+  --page-red:    #ff4d6d;
+  --page-gold:   #ffc83d;
+  --page-radius: 16px;
+  --page-shadow: 0 8px 40px rgba(0,0,0,.55);
+}
+
+body {
+  font-family:'Segoe UI',system-ui,-apple-system,sans-serif;
+  background:var(--page-bg);
+  color:var(--page-text);
+  min-height:100vh;
+}
+
+/* ── HERO ─────────────────────────────────────────────────────────────── */
+.hero {
+  position:relative;overflow:hidden;
+  background:linear-gradient(160deg,#0a0d1a 0%,#0c1228 40%,#0e1535 100%);
+  border-bottom:1px solid var(--page-border);
+  text-align:center;padding:56px 24px 48px;
+}
+.hero::before{
+  content:'';position:absolute;inset:0;
+  background:radial-gradient(ellipse 90% 55% at 50% -10%,rgba(108,99,255,.22) 0%,transparent 70%);
+  pointer-events:none;
+}
+.hero::after{
+  content:'';position:absolute;bottom:0;left:0;right:0;height:1px;
+  background:linear-gradient(90deg,transparent,rgba(108,99,255,.5),transparent);
+}
+.hero-eyebrow{
+  display:inline-flex;align-items:center;gap:8px;
+  background:rgba(108,99,255,.12);border:1px solid rgba(108,99,255,.35);
+  border-radius:999px;padding:5px 16px;font-size:11px;font-weight:700;
+  letter-spacing:.1em;text-transform:uppercase;color:#a89dff;margin-bottom:22px;
+}
+.hero h1{
+  font-size:clamp(28px,6vw,52px);font-weight:900;letter-spacing:-.03em;
+  line-height:1.1;margin-bottom:16px;
+  background:linear-gradient(135deg,#fff 0%,#c9c3ff 45%,#a89dff 100%);
+  -webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;
+}
+.hero-sub{
+  color:var(--page-muted);font-size:16px;max-width:600px;margin:0 auto 28px;line-height:1.65;
+}
+.pill-row{display:flex;flex-wrap:wrap;justify-content:center;gap:8px;}
+.pill{
+  background:var(--page-surf2);border:1px solid var(--page-border);
+  border-radius:999px;padding:5px 14px;font-size:12px;font-weight:500;color:var(--page-muted);
+}
+
+/* ── PAGE LAYOUT ──────────────────────────────────────────────────────── */
+.wrap{max-width:1180px;margin:0 auto;padding:52px 24px;display:flex;flex-direction:column;gap:44px;}
+
+/* ── SECTION HEADER ───────────────────────────────────────────────────── */
+.sec-hdr{display:flex;align-items:center;gap:14px;margin-bottom:22px;}
+.sec-icon{
+  width:42px;height:42px;border-radius:11px;
+  display:flex;align-items:center;justify-content:center;font-size:18px;flex-shrink:0;
+}
+.si-purple{background:linear-gradient(135deg,#6c63ff,#4a43ee);}
+.si-green {background:linear-gradient(135deg,#00d084,#00a86b);}
+.si-red   {background:linear-gradient(135deg,#ff4d6d,#e8294a);}
+.si-gold  {background:linear-gradient(135deg,#ffc83d,#f59e0b);}
+.si-blue  {background:linear-gradient(135deg,#38bdf8,#0ea5e9);}
+.sec-label{font-size:10px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--page-muted);}
+.sec-title{font-size:22px;font-weight:800;color:var(--page-text);}
+.sec-sub  {font-size:13px;color:var(--page-muted);margin-top:2px;}
+
+/* ── CODE CARD ────────────────────────────────────────────────────────── */
+.code-card{
+  background:var(--page-surf);border:1px solid var(--page-border);
+  border-radius:var(--page-radius);overflow:hidden;box-shadow:var(--page-shadow);
+}
+.code-hdr{
+  display:flex;align-items:center;justify-content:space-between;
+  padding:13px 20px;background:var(--page-surf2);border-bottom:1px solid var(--page-border);
+}
+.code-hdr-left{display:flex;align-items:center;gap:10px;}
+.lang-dot{width:8px;height:8px;border-radius:50%;}
+.dot-html{background:#e44d26;}.dot-css{background:#264de4;}.dot-js{background:#f7df1e;}
+.code-hdr-name{font-size:12px;font-weight:600;color:var(--page-muted);}
+.copy-btn{
+  display:flex;align-items:center;gap:6px;
+  background:rgba(108,99,255,.12);border:1px solid rgba(108,99,255,.3);
+  border-radius:8px;padding:6px 14px;font-size:12px;font-weight:700;color:#a89dff;
+  cursor:pointer;transition:all .2s;user-select:none;
+}
+.copy-btn:hover{background:rgba(108,99,255,.25);}
+.copy-btn.ok{background:rgba(0,208,132,.12);border-color:rgba(0,208,132,.35);color:var(--page-green);}
+.code-body{padding:24px;overflow-x:auto;}
+.code-body pre{
+  font-family:'Cascadia Code','Fira Code','Consolas','Monaco',monospace;
+  font-size:12.5px;line-height:1.7;color:#c9d1d9;white-space:pre;tab-size:2;
+}
+/* Syntax tokens */
+.t-tag{color:#79c0ff;}.t-attr{color:#d2a8ff;}.t-str{color:#a5d6ff;}.t-cmt{color:#546070;font-style:italic;}
+.t-kw{color:#ff7b72;}.t-fn{color:#d2a8ff;}.t-num{color:#79c0ff;}.t-str2{color:#a8d8a8;}
+.t-sel{color:#79c0ff;}.t-prop{color:#d2a8ff;}.t-val{color:#a8d8a8;}.t-at{color:#f78166;}
+.t-anki{color:#ffa657;font-weight:600;}
+
+/* ── LIVE PREVIEW PANEL ───────────────────────────────────────────────── */
+.preview-shell{
+  background:var(--page-surf);border:1px solid var(--page-border);
+  border-radius:var(--page-radius);overflow:hidden;box-shadow:var(--page-shadow);
+}
+.preview-tabs{display:flex;background:var(--page-surf2);border-bottom:1px solid var(--page-border);}
+.ptab{
+  padding:13px 26px;font-size:13px;font-weight:600;cursor:pointer;
+  color:var(--page-muted);border-bottom:2px solid transparent;transition:all .2s;user-select:none;
+}
+.ptab.on{color:var(--page-accent);border-bottom-color:var(--page-accent);background:rgba(108,99,255,.06);}
+.preview-body{padding:36px 24px;display:flex;justify-content:center;min-height:520px;align-items:flex-start;}
+.ppane{display:none;width:100%;max-width:520px;}
+.ppane.on{display:block;}
+
+/* ═══════════════════════════════════════════════════════════════════════
+   MCQ CARD — LIVE PREVIEW (mirrors exact Anki CSS)
+═══════════════════════════════════════════════════════════════════════ */
+.mcq-wrap{
+  --g:  #00d084; --gb: rgba(0,208,132,.12); --gbr:rgba(0,208,132,.32);
+  --r:  #ff4d6d; --rb: rgba(255,77,109,.12);--rbr:rgba(255,77,109,.32);
+  --ac: #7c73f5; --ab: rgba(124,115,245,.12);--abr:rgba(124,115,245,.28);
+  --tx: #e8eaf6; --tm: #8a8fad; --sf:#1a1d27; --sf2:#22263a; --bd:#2e3349;
+  --sk: rgba(255,165,0,.1); --skb:rgba(255,165,0,.28); --skt:#ffa500;
+  font-family:'Segoe UI',system-ui,sans-serif;
+  background:#111420;border:1px solid #2a2f4a;border-radius:22px;
+  padding:26px 22px;box-shadow:0 12px 48px rgba(0,0,0,.6);
+}
+.mcq-top{display:flex;justify-content:space-between;align-items:center;margin-bottom:18px;}
+.mcq-badge-pill{
+  background:var(--ab);border:1px solid var(--abr);border-radius:999px;
+  padding:4px 14px;font-size:10px;font-weight:800;letter-spacing:.1em;
+  text-transform:uppercase;color:var(--ac);
+}
+.mcq-streak-pill{
+  display:inline-flex;align-items:center;gap:5px;
+  background:var(--sk);border:1px solid var(--skb);border-radius:999px;
+  padding:5px 14px;font-size:13px;font-weight:800;color:var(--skt);
+  transition:transform .25s,box-shadow .25s;
+}
+.mcq-streak-pill.pulse{transform:scale(1.1);box-shadow:0 0 14px rgba(255,140,0,.35);}
+.mcq-q{
+  font-size:16px;font-weight:600;line-height:1.6;color:var(--tx);
+  background:var(--sf);border:1px solid var(--bd);border-radius:13px;
+  padding:16px 18px;margin-bottom:18px;
+}
+.mcq-opts{display:flex;flex-direction:column;gap:10px;margin-bottom:14px;}
+.mcq-opt{
+  display:flex;align-items:center;gap:12px;
+  background:var(--sf2);border:1.5px solid var(--bd);border-radius:13px;
+  padding:14px 16px;cursor:pointer;
+  font-size:14px;font-weight:500;color:var(--tx);
+  transition:border-color .18s,background .18s,transform .12s,box-shadow .18s;
+  user-select:none;-webkit-tap-highlight-color:transparent;
+  min-height:52px;position:relative;overflow:hidden;
+}
+.mcq-opt:hover:not(.disabled){border-color:var(--ac);background:var(--ab);transform:translateY(-1px);box-shadow:0 4px 14px rgba(124,115,245,.18);}
+.mcq-opt.disabled{cursor:default;pointer-events:none;}
+.mcq-opt.st-correct{border-color:var(--g);background:var(--gb);box-shadow:0 0 0 2px var(--gbr),0 4px 18px rgba(0,208,132,.2);animation:pop .35s ease;}
+.mcq-opt.st-wrong{border-color:var(--r);background:var(--rb);box-shadow:0 0 0 2px var(--rbr);animation:shake .42s ease;}
+.opt-ltr{
+  width:30px;height:30px;min-width:30px;border-radius:8px;
+  background:var(--ab);border:1px solid var(--abr);
+  display:flex;align-items:center;justify-content:center;
+  font-size:12px;font-weight:800;color:var(--ac);flex-shrink:0;
+  transition:all .18s;
+}
+.st-correct .opt-ltr{background:var(--gb);border-color:var(--g);color:var(--g);}
+.st-wrong   .opt-ltr{background:var(--rb);border-color:var(--r);color:var(--r);}
+.opt-txt{flex:1;line-height:1.45;}
+.opt-ico{font-size:15px;font-weight:800;min-width:22px;text-align:center;}
+.st-correct .opt-ico{color:var(--g);}
+.st-wrong   .opt-ico{color:var(--r);}
+.mcq-hint{
+  text-align:center;font-size:12px;font-weight:500;color:var(--tm);
+  padding:4px 0;transition:color .2s;
+}
+.mcq-hint.h-ok{color:var(--g);} .mcq-hint.h-bad{color:var(--r);}
+
+/* back card */
+.back-banner{
+  display:flex;align-items:center;gap:10px;
+  background:var(--gb);border:1px solid var(--gbr);border-radius:13px;
+  padding:13px 16px;font-size:15px;font-weight:700;color:var(--g);margin-bottom:16px;
+  animation:fadeDown .4s ease;
+}
+.back-lbl{font-size:10px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--tm);margin:14px 0 7px;}
+.back-lbl:first-of-type{margin-top:0;}
+.back-q{font-size:15px;font-weight:600;color:var(--tx);line-height:1.55;background:var(--sf);border:1px solid var(--bd);border-radius:10px;padding:14px 16px;}
+.back-opts{display:flex;flex-direction:column;gap:8px;}
+.back-opt{
+  display:flex;align-items:center;gap:12px;
+  background:var(--sf);border:1.5px solid var(--bd);border-radius:10px;
+  padding:11px 14px;font-size:13px;color:var(--tx);opacity:.55;
+}
+.back-opt.bopt-ok{border-color:var(--g);background:var(--gb);opacity:1;font-weight:600;box-shadow:0 0 0 2px var(--gbr);}
+.back-opt-ltr{
+  width:27px;height:27px;min-width:27px;border-radius:7px;
+  background:var(--sf2);border:1px solid var(--bd);
+  display:flex;align-items:center;justify-content:center;
+  font-size:11px;font-weight:800;color:var(--tm);flex-shrink:0;
+}
+.bopt-ok .back-opt-ltr{background:var(--gb);border-color:var(--g);color:var(--g);}
+.back-opt-txt{flex:1;}.back-opt-ico{font-size:14px;font-weight:800;min-width:20px;text-align:center;color:var(--g);}
+.back-exp{
+  background:var(--ab);border-left:3px solid var(--ac);border-radius:0 10px 10px 0;
+  padding:14px 16px;font-size:13px;line-height:1.65;color:var(--tx);
+}
+
+@keyframes pop  {0%{transform:scale(1)}40%{transform:scale(1.018)}100%{transform:scale(1)}}
+@keyframes shake{10%,90%{transform:translateX(-2px)}20%,80%{transform:translateX(4px)}30%,50%,70%{transform:translateX(-5px)}40%,60%{transform:translateX(5px)}}
+@keyframes fadeDown{from{opacity:0;transform:translateY(-6px)}to{opacity:1;transform:translateY(0)}}
+@keyframes popIn{from{opacity:0;transform:translate(-50%,-50%) scale(.65)}to{opacity:1;transform:translate(-50%,-50%) scale(1)}}
+@keyframes popOut{from{opacity:1;transform:translate(-50%,-50%) scale(1)}to{opacity:0;transform:translate(-50%,-50%) scale(.82)}}
+@keyframes msIn{from{opacity:0;transform:translateX(-50%) scale(.7) translateY(-8px)}to{opacity:1;transform:translateX(-50%) scale(1) translateY(0)}}
+@keyframes msOut{from{opacity:1}to{opacity:0;transform:translateX(-50%) translateY(-8px)}}
+
+/* ── FEATURE GRID ─────────────────────────────────────────────────────── */
+.feat-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:16px;}
+.feat-card{
+  background:var(--page-surf);border:1px solid var(--page-border);
+  border-radius:13px;padding:18px;
+}
+.feat-ico{font-size:26px;margin-bottom:8px;}
+.feat-ttl{font-size:13px;font-weight:700;color:var(--page-text);margin-bottom:4px;}
+.feat-dsc{font-size:12px;color:var(--page-muted);line-height:1.55;}
+
+/* ── INSTALL BOX ──────────────────────────────────────────────────────── */
+.install-box{
+  background:var(--page-surf);border:1px solid var(--page-border);
+  border-radius:var(--page-radius);padding:28px;box-shadow:var(--page-shadow);
+}
+.step{display:flex;gap:16px;padding:14px 0;border-bottom:1px solid var(--page-border);}
+.step:last-child{border-bottom:none;}
+.step-n{
+  width:28px;height:28px;min-width:28px;border-radius:50%;
+  background:var(--page-accent);display:flex;align-items:center;justify-content:center;
+  font-size:12px;font-weight:800;flex-shrink:0;color:#fff;
+}
+.step-txt{font-size:14px;color:var(--page-text);line-height:1.65;}
+.step-txt strong{color:#a89dff;}
+.step-txt code{
+  background:var(--page-surf2);border:1px solid var(--page-border);
+  border-radius:5px;padding:1px 7px;
+  font-family:'Cascadia Code','Fira Code',monospace;font-size:12px;color:#ffa657;
+}
+.note{
+  background:rgba(255,200,61,.06);border:1px solid rgba(255,200,61,.22);
+  border-radius:10px;padding:14px 18px;font-size:13px;color:#d4a017;line-height:1.6;margin-top:16px;
+}
+.note2{
+  background:rgba(0,208,132,.06);border:1px solid rgba(0,208,132,.22);
+  border-radius:10px;padding:14px 18px;font-size:13px;color:#00c07a;line-height:1.6;margin-top:10px;
+}
+
+/* ── FOOTER ───────────────────────────────────────────────────────────── */
+.footer{
+  text-align:center;padding:32px 24px;border-top:1px solid var(--page-border);
+  color:var(--page-muted);font-size:13px;
+}
+
+@media(max-width:640px){
+  .wrap{padding:28px 14px;gap:28px;}
+  .code-body{padding:14px;}
+  .code-body pre{font-size:11px;}
+}
+  </style>
+</head>
+<body>
+
+<!-- ═══════════════════════════════ HERO ═══════════════════════════════ -->
+<div class="hero">
+  <div class="hero-eyebrow">🏆 Award-Winning Edition</div>
+  <h1>Premium Anki MCQ<br>Card Template</h1>
+  <p class="hero-sub">A world-class multiple-choice system — embedded sounds, bulletproof answer logic, streak engine, milestones, motivational popups, dark mode, and full mobile support. Zero dependencies.</p>
+  <div class="pill-row">
+    <span class="pill">🔊 Embedded Sounds — No Files Needed</span>
+    <span class="pill">🎯 Correct Text Matching Logic</span>
+    <span class="pill">🔥 Streak + Milestones</span>
+    <span class="pill">🌙 Auto Dark Mode</span>
+    <span class="pill">📱 Mobile First</span>
+    <span class="pill">♿ ARIA Accessible</span>
+    <span class="pill">⚡ Zero CDN</span>
+    <span class="pill">✨ Motivational Popups</span>
+  </div>
+</div>
+
+<div class="wrap">
+
+<!-- ═══════════════ LIVE PREVIEW ═══════════════ -->
+<div>
+  <div class="sec-hdr">
+    <div class="sec-icon si-blue">👁️</div>
+    <div>
+      <div class="sec-label">Interactive Demo</div>
+      <div class="sec-title">Try the Card — Click to Interact</div>
+      <div class="sec-sub">Select a wrong answer, then find the correct one</div>
+    </div>
+  </div>
+  <div class="preview-shell">
+    <div class="preview-tabs">
+      <div class="ptab on" onclick="switchTab('front',this)">Front (Question)</div>
+      <div class="ptab" onclick="switchTab('back',this)">Back (Answer + Explanation)</div>
+    </div>
+    <div class="preview-body">
+      <!-- FRONT -->
+      <div class="ppane on" id="tab-front">
+        <div class="mcq-wrap" id="demo-card">
+          <div class="mcq-top">
+            <div class="mcq-badge-pill">MCQ</div>
+            <div class="mcq-streak-pill" id="demo-streak">🔥 <span id="demo-sn">4</span></div>
+          </div>
+          <div class="mcq-q">Which layer of the OSI model handles logical addressing (IP) and routing of packets between networks?</div>
+          <div class="mcq-opts" id="demo-opts">
+            <div class="mcq-opt" onclick="demoClick(this,false)">
+              <div class="opt-ltr">A</div><div class="opt-txt">Data Link Layer</div><div class="opt-ico"></div>
+            </div>
+            <div class="mcq-opt" onclick="demoClick(this,true)">
+              <div class="opt-ltr">B</div><div class="opt-txt">Network Layer</div><div class="opt-ico"></div>
+            </div>
+            <div class="mcq-opt" onclick="demoClick(this,false)">
+              <div class="opt-ltr">C</div><div class="opt-txt">Transport Layer</div><div class="opt-ico"></div>
+            </div>
+            <div class="mcq-opt" onclick="demoClick(this,false)">
+              <div class="opt-ltr">D</div><div class="opt-txt">Session Layer</div><div class="opt-ico"></div>
+            </div>
+          </div>
+          <div class="mcq-hint" id="demo-hint">Tap an option to answer</div>
+        </div>
+      </div>
+      <!-- BACK -->
+      <div class="ppane" id="tab-back">
+        <div class="mcq-wrap">
+          <div class="back-banner">✅ Correct Answer! <span style="margin-left:auto;font-size:13px;opacity:.8">Great work!</span></div>
+          <div class="back-lbl">Question</div>
+          <div class="back-q">Which layer of the OSI model handles logical addressing (IP) and routing of packets between networks?</div>
+          <div class="back-lbl">Options</div>
+          <div class="back-opts">
+            <div class="back-opt"><div class="back-opt-ltr">A</div><div class="back-opt-txt">Data Link Layer</div></div>
+            <div class="back-opt bopt-ok"><div class="back-opt-ltr">B</div><div class="back-opt-txt">Network Layer</div><div class="back-opt-ico">✓</div></div>
+            <div class="back-opt"><div class="back-opt-ltr">C</div><div class="back-opt-txt">Transport Layer</div></div>
+            <div class="back-opt"><div class="back-opt-ltr">D</div><div class="back-opt-txt">Session Layer</div></div>
+          </div>
+          <div class="back-lbl">Explanation</div>
+          <div class="back-exp">The <strong>Network Layer (Layer 3)</strong> handles logical (IP) addressing and packet routing between networks. Routers operate here. Data Link handles physical MAC addressing, Transport manages end-to-end reliability (TCP/UDP), and Session manages application sessions.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════════ FEATURES ═══════════════ -->
+<div>
+  <div class="sec-hdr">
+    <div class="sec-icon si-gold">✨</div>
+    <div><div class="sec-label">Everything Included</div><div class="sec-title">Award-Winning Feature Set</div></div>
+  </div>
+  <div class="feat-grid">
+    <div class="feat-card"><div class="feat-ico">🎯</div><div class="feat-ttl">Correct Text Matching</div><div class="feat-dsc">CorrectOption field holds the exact answer text. Matched by innerHTML — identical to the proven old template logic.</div></div>
+    <div class="feat-card"><div class="feat-ico">🔊</div><div class="feat-ttl">Embedded Web Audio</div><div class="feat-dsc">Sounds generated via Web Audio API — no mp3 files, no CDN. Always works. Unique tones for correct & wrong.</div></div>
+    <div class="feat-card"><div class="feat-ico">🔁</div><div class="feat-ttl">Unlimited Retries</div><div class="feat-dsc">Wrong options disabled after click. Card only flips when the correct answer is chosen.</div></div>
+    <div class="feat-card"><div class="feat-ico">🔥</div><div class="feat-ttl">Streak + Milestones</div><div class="feat-dsc">localStorage streak. Milestones at 3, 5, 10, 20, 50 with animated celebration popups.</div></div>
+    <div class="feat-card"><div class="feat-ico">✨</div><div class="feat-ttl">Motivational Popups</div><div class="feat-dsc">10 rotating messages after correct answers. Spring-physics animation, 1000ms auto-hide.</div></div>
+    <div class="feat-card"><div class="feat-ico">🌙</div><div class="feat-ttl">Dark Mode Auto</div><div class="feat-dsc">Anki's .nightMode class + prefers-color-scheme media query. Full contrast both modes.</div></div>
+    <div class="feat-card"><div class="feat-ico">📱</div><div class="feat-ttl">Mobile Perfect</div><div class="feat-dsc">56px touch targets, Anki .mobile class support, no horizontal scroll. AnkiDroid & iOS ready.</div></div>
+    <div class="feat-card"><div class="feat-ico">♿</div><div class="feat-ttl">Accessible</div><div class="feat-dsc">ARIA roles, aria-live regions, focus-visible outlines, icon + color dual feedback.</div></div>
+  </div>
+</div>
+
+<!-- ═══════════════ SECTION 1 — FRONT TEMPLATE ═══════════════ -->
+<div>
+  <div class="sec-hdr">
+    <div class="sec-icon si-purple">①</div>
+    <div>
+      <div class="sec-label">Section 1 of 3 — Paste into: Cards → Front Template</div>
+      <div class="sec-title">Front Template</div>
+      <div class="sec-sub">CorrectOption field = exact answer text (same as the option text)</div>
+    </div>
+  </div>
+  <div class="code-card">
+    <div class="code-hdr">
+      <div class="code-hdr-left"><span class="lang-dot dot-html"></span><span class="code-hdr-name">front_template.html</span></div>
+      <button class="copy-btn" onclick="copyEl('front-code',this)">⧉ Copy</button>
+    </div>
+    <div class="code-body"><pre id="front-code"><span class="t-cmt">&lt;!--
+  ╔══════════════════════════════════════════════════════════════════════╗
+  ║  PREMIUM ANKI MCQ CARD — FRONT TEMPLATE  (Award Edition v3)        ║
+  ║                                                                      ║
+  ║  FIELD SETUP:                                                        ║
+  ║    Question      — The question text                                 ║
+  ║    Option1-4     — Answer choices                                    ║
+  ║    CorrectOption — EXACT TEXT of the correct option (copy-paste)     ║
+  ║    Explanation   — Used on back side only                            ║
+  ║                                                                      ║
+  ║  SOUND: Embedded via Web Audio API — NO FILES NEEDED                 ║
+  ╚══════════════════════════════════════════════════════════════════════╝
+--&gt;</span>
+
+<span class="t-cmt">&lt;!-- ── HIDDEN DATA STORE ───────────────────────────────────────────── --&gt;</span>
+<span class="t-tag">&lt;div</span> <span class="t-attr">id</span>=<span class="t-str">"mcqData"</span> <span class="t-attr">style</span>=<span class="t-str">"display:none"</span> <span class="t-attr">aria-hidden</span>=<span class="t-str">"true"</span><span class="t-tag">&gt;</span>
+  <span class="t-tag">&lt;span</span> <span class="t-attr">id</span>=<span class="t-str">"dQ"</span><span class="t-tag">&gt;</span><span class="t-anki">{{Question}}</span><span class="t-tag">&lt;/span&gt;</span>
+  <span class="t-tag">&lt;span</span> <span class="t-attr">id</span>=<span class="t-str">"d1"</span><span class="t-tag">&gt;</span><span class="t-anki">{{Option1}}</span><span class="t-tag">&lt;/span&gt;</span>
+  <span class="t-tag">&lt;span</span> <span class="t-attr">id</span>=<span class="t-str">"d2"</span><span class="t-tag">&gt;</span><span class="t-anki">{{Option2}}</span><span class="t-tag">&lt;/span&gt;</span>
+  <span class="t-tag">&lt;span</span> <span class="t-attr">id</span>=<span class="t-str">"d3"</span><span class="t-tag">&gt;</span><span class="t-anki">{{Option3}}</span><span class="t-tag">&lt;/span&gt;</span>
+  <span class="t-tag">&lt;span</span> <span class="t-attr">id</span>=<span class="t-str">"d4"</span><span class="t-tag">&gt;</span><span class="t-anki">{{Option4}}</span><span class="t-tag">&lt;/span&gt;</span>
+  <span class="t-tag">&lt;span</span> <span class="t-attr">id</span>=<span class="t-str">"dC"</span><span class="t-tag">&gt;</span><span class="t-anki">{{CorrectOption}}</span><span class="t-tag">&lt;/span&gt;</span>
+<span class="t-tag">&lt;/div&gt;</span>
+
+<span class="t-cmt">&lt;!-- ── CARD SHELL ───────────────────────────────────────────────────── --&gt;</span>
+<span class="t-tag">&lt;div</span> <span class="t-attr">class</span>=<span class="t-str">"mcq-card"</span> <span class="t-attr">id</span>=<span class="t-str">"mcqCard"</span> <span class="t-attr">role</span>=<span class="t-str">"main"</span><span class="t-tag">&gt;</span>
+
+  <span class="t-cmt">&lt;!-- header --&gt;</span>
+  <span class="t-tag">&lt;div</span> <span class="t-attr">class</span>=<span class="t-str">"mcq-header"</span><span class="t-tag">&gt;</span>
+    <span class="t-tag">&lt;div</span> <span class="t-attr">class</span>=<span class="t-str">"mcq-badge"</span><span class="t-tag">&gt;</span>MCQ<span class="t-tag">&lt;/div&gt;</span>
+    <span class="t-tag">&lt;div</span> <span class="t-attr">class</span>=<span class="t-str">"streak-pill"</span> <span class="t-attr">id</span>=<span class="t-str">"streakPill"</span>
+         <span class="t-attr">role</span>=<span class="t-str">"status"</span> <span class="t-attr">aria-live</span>=<span class="t-str">"polite"</span> <span class="t-attr">aria-label</span>=<span class="t-str">"Current streak"</span><span class="t-tag">&gt;</span>
+      🔥 <span class="t-tag">&lt;span</span> <span class="t-attr">id</span>=<span class="t-str">"streakNum"</span><span class="t-tag">&gt;</span>0<span class="t-tag">&lt;/span&gt;</span>
+    <span class="t-tag">&lt;/div&gt;</span>
+  <span class="t-tag">&lt;/div&gt;</span>
+
+  <span class="t-cmt">&lt;!-- question --&gt;</span>
+  <span class="t-tag">&lt;div</span> <span class="t-attr">class</span>=<span class="t-str">"mcq-question"</span> <span class="t-attr">id</span>=<span class="t-str">"mcqQuestion"</span>
+       <span class="t-attr">role</span>=<span class="t-str">"heading"</span> <span class="t-attr">aria-level</span>=<span class="t-str">"1"</span><span class="t-tag">&gt;&lt;/div&gt;</span>
+
+  <span class="t-cmt">&lt;!-- options (rendered by JS) --&gt;</span>
+  <span class="t-tag">&lt;div</span> <span class="t-attr">class</span>=<span class="t-str">"mcq-options"</span> <span class="t-attr">id</span>=<span class="t-str">"mcqOptions"</span> <span class="t-attr">role</span>=<span class="t-str">"list"</span><span class="t-tag">&gt;&lt;/div&gt;</span>
+
+  <span class="t-cmt">&lt;!-- status hint --&gt;</span>
+  <span class="t-tag">&lt;div</span> <span class="t-attr">class</span>=<span class="t-str">"mcq-hint"</span> <span class="t-attr">id</span>=<span class="t-str">"mcqHint"</span>
+       <span class="t-attr">aria-live</span>=<span class="t-str">"polite"</span><span class="t-tag">&gt;</span>Select the correct answer<span class="t-tag">&lt;/div&gt;</span>
+
+  <span class="t-cmt">&lt;!-- floating popups --&gt;</span>
+  <span class="t-tag">&lt;div</span> <span class="t-attr">class</span>=<span class="t-str">"mot-popup"</span> <span class="t-attr">id</span>=<span class="t-str">"motPopup"</span>
+       <span class="t-attr">aria-live</span>=<span class="t-str">"assertive"</span> <span class="t-attr">aria-atomic</span>=<span class="t-str">"true"</span><span class="t-tag">&gt;&lt;/div&gt;</span>
+  <span class="t-tag">&lt;div</span> <span class="t-attr">class</span>=<span class="t-str">"ms-popup"</span> <span class="t-attr">id</span>=<span class="t-str">"msPopup"</span>
+       <span class="t-attr">aria-live</span>=<span class="t-str">"assertive"</span><span class="t-tag">&gt;&lt;/div&gt;</span>
+
+<span class="t-tag">&lt;/div&gt;</span>
+
+<span class="t-tag">&lt;script&gt;</span>
+<span class="t-cmt">/* ═══════════════════════════════════════════════════════════════════════
+   PREMIUM MCQ FRONT — Award Edition v3
+   Logic: CorrectOption = EXACT TEXT of the correct answer option.
+          Comparison is done by innerHTML string match.
+   Sound: Web Audio API — fully embedded, zero files needed.
+════════════════════════════════════════════════════════════════════════ */</span>
+(<span class="t-kw">function</span>() {
+  <span class="t-str">'use strict'</span>;
+
+  <span class="t-cmt">/* ── CONFIG ──────────────────────────────────────────────────────────── */</span>
+  <span class="t-kw">var</span> STREAK_KEY   = <span class="t-str2">'ankiMCQ_streak_v3'</span>;
+  <span class="t-kw">var</span> LETTERS      = [<span class="t-str2">'A'</span>,<span class="t-str2">'B'</span>,<span class="t-str2">'C'</span>,<span class="t-str2">'D'</span>];
+  <span class="t-kw">var</span> MOTIVATIONS  = [
+    <span class="t-str2">'⚡ Awesome!'</span>, <span class="t-str2">'🚀 Keep Going!'</span>, <span class="t-str2">'🎯 Spot On!'</span>, <span class="t-str2">'🔥 On Fire!'</span>,
+    <span class="t-str2">'💪 Crushing It!'</span>, <span class="t-str2">'✅ Well Done!'</span>, <span class="t-str2">'🌟 Superb!'</span>,
+    <span class="t-str2">'🧠 Brilliant!'</span>, <span class="t-str2">'💥 Let\'s Go!'</span>, <span class="t-str2">'🏅 Outstanding!'</span>
+  ];
+  <span class="t-kw">var</span> MILESTONES   = [
+    {n:3,  e:<span class="t-str2">'⭐'</span>, m:<span class="t-str2">'Great Start!'</span>},
+    {n:5,  e:<span class="t-str2">'🔥'</span>, m:<span class="t-str2">'You\'re on Fire!'</span>},
+    {n:10, e:<span class="t-str2">'🚀'</span>, m:<span class="t-str2">'Amazing!'</span>},
+    {n:20, e:<span class="t-str2">'🏆'</span>, m:<span class="t-str2">'Elite Focus!'</span>},
+    {n:50, e:<span class="t-str2">'👑'</span>, m:<span class="t-str2">'Learning Machine!'</span>}
+  ];
+
+  <span class="t-cmt">/* ── STATE ───────────────────────────────────────────────────────────── */</span>
+  <span class="t-kw">var</span> answered     = <span class="t-kw">false</span>;
+  <span class="t-kw">var</span> wrongClicked = {};
+  <span class="t-kw">var</span> correctText  = <span class="t-str2">''</span>;
+  <span class="t-kw">var</span> optionEls    = [];
+
+  <span class="t-cmt">/* ── STREAK ──────────────────────────────────────────────────────────── */</span>
+  <span class="t-kw">function</span> <span class="t-fn">getStreak</span>() {
+    <span class="t-kw">try</span> { <span class="t-kw">var</span> v = localStorage.getItem(STREAK_KEY); <span class="t-kw">return</span> v ? +v : 0; }
+    <span class="t-kw">catch</span>(e) { <span class="t-kw">return</span> 0; }
+  }
+  <span class="t-kw">function</span> <span class="t-fn">setStreak</span>(n) {
+    <span class="t-kw">try</span> { localStorage.setItem(STREAK_KEY, n); } <span class="t-kw">catch</span>(e) {}
+  }
+  <span class="t-kw">function</span> <span class="t-fn">renderStreak</span>(n) {
+    <span class="t-kw">var</span> el = document.getElementById(<span class="t-str2">'streakNum'</span>);
+    <span class="t-kw">if</span> (el) el.textContent = n;
+    <span class="t-kw">var</span> pill = document.getElementById(<span class="t-str2">'streakPill'</span>);
+    <span class="t-kw">if</span> (pill) {
+      pill.className = <span class="t-str2">'streak-pill'</span> + (n > 0 ? <span class="t-str2">' streak-on'</span> : <span class="t-str2">''</span>);
+    }
+  }
+
+  <span class="t-cmt">/* ── WEB AUDIO SOUNDS (fully embedded — no files) ────────────────────── */</span>
+  <span class="t-kw">function</span> <span class="t-fn">getAudioCtx</span>() {
+    <span class="t-kw">try</span> {
+      <span class="t-kw">return</span> <span class="t-kw">new</span> (window.AudioContext || window.webkitAudioContext)();
+    } <span class="t-kw">catch</span>(e) { <span class="t-kw">return</span> <span class="t-kw">null</span>; }
+  }
+  <span class="t-kw">function</span> <span class="t-fn">playCorrectSound</span>() {
+    <span class="t-kw">var</span> ctx = getAudioCtx(); <span class="t-kw">if</span> (!ctx) <span class="t-kw">return</span>;
+    <span class="t-kw">var</span> t = ctx.currentTime;
+    <span class="t-cmt">/* Rising two-tone chime: C5 → E5 */</span>
+    [[523.25, t,      0.18, 0.0, 0.7],
+     [659.25, t+0.13, 0.22, 0.0, 0.7],
+     [783.99, t+0.27, 0.28, 0.0, 0.7]].forEach(<span class="t-kw">function</span>(p) {
+      <span class="t-kw">var</span> osc  = ctx.createOscillator();
+      <span class="t-kw">var</span> gain = ctx.createGain();
+      osc.type = <span class="t-str2">'sine'</span>;
+      osc.frequency.setValueAtTime(p[0], p[1]);
+      gain.gain.setValueAtTime(p[4], p[1]);
+      gain.gain.exponentialRampToValueAtTime(0.0001, p[1]+p[2]);
+      osc.connect(gain); gain.connect(ctx.destination);
+      osc.start(p[1]); osc.stop(p[1]+p[2]+0.05);
+    });
+  }
+  <span class="t-kw">function</span> <span class="t-fn">playWrongSound</span>() {
+    <span class="t-kw">var</span> ctx = getAudioCtx(); <span class="t-kw">if</span> (!ctx) <span class="t-kw">return</span>;
+    <span class="t-kw">var</span> t = ctx.currentTime;
+    <span class="t-cmt">/* Descending buzz: two low tones */</span>
+    [[220, t,      0.15, 0.0, 0.55, <span class="t-str2">'sawtooth'</span>],
+     [174, t+0.12, 0.20, 0.0, 0.45, <span class="t-str2">'sawtooth'</span>]].forEach(<span class="t-kw">function</span>(p) {
+      <span class="t-kw">var</span> osc  = ctx.createOscillator();
+      <span class="t-kw">var</span> gain = ctx.createGain();
+      osc.type = p[5];
+      osc.frequency.setValueAtTime(p[0], p[1]);
+      gain.gain.setValueAtTime(p[4], p[1]);
+      gain.gain.exponentialRampToValueAtTime(0.0001, p[1]+p[2]);
+      osc.connect(gain); gain.connect(ctx.destination);
+      osc.start(p[1]); osc.stop(p[1]+p[2]+0.05);
+    });
+  }
+
+  <span class="t-cmt">/* ── MOTIVATIONAL POPUP ───────────────────────────────────────────────── */</span>
+  <span class="t-kw">function</span> <span class="t-fn">showMotPopup</span>(msg, cls) {
+    <span class="t-kw">var</span> el = document.getElementById(<span class="t-str2">'motPopup'</span>);
+    <span class="t-kw">if</span> (!el) <span class="t-kw">return</span>;
+    el.textContent = msg;
+    el.className = <span class="t-str2">'mot-popup '</span> + (cls || <span class="t-str2">'mot-ok'</span>) + <span class="t-str2">' mot-in'</span>;
+    el.style.display = <span class="t-str2">'block'</span>;
+    <span class="t-kw">var</span> t1 = setTimeout(<span class="t-kw">function</span>() {
+      el.className = <span class="t-str2">'mot-popup mot-out'</span>;
+      <span class="t-kw">var</span> t2 = setTimeout(<span class="t-kw">function</span>() { el.style.display = <span class="t-str2">'none'</span>; }, 380);
+    }, 1000);
+  }
+
+  <span class="t-cmt">/* ── MILESTONE POPUP ──────────────────────────────────────────────────── */</span>
+  <span class="t-kw">function</span> <span class="t-fn">checkMilestone</span>(n) {
+    <span class="t-kw">var</span> hit = <span class="t-kw">null</span>;
+    <span class="t-kw">for</span> (<span class="t-kw">var</span> i=0;i&lt;MILESTONES.length;i++) {
+      <span class="t-kw">if</span> (MILESTONES[i].n === n) { hit = MILESTONES[i]; <span class="t-kw">break</span>; }
+    }
+    <span class="t-kw">if</span> (!hit) <span class="t-kw">return</span>;
+    <span class="t-kw">var</span> el = document.getElementById(<span class="t-str2">'msPopup'</span>);
+    <span class="t-kw">if</span> (!el) <span class="t-kw">return</span>;
+    el.innerHTML = <span class="t-str2">'&lt;span class="ms-em"&gt;'</span>+hit.e+<span class="t-str2">'&lt;/span&gt;&lt;span class="ms-msg"&gt;'</span>+hit.m+<span class="t-str2">'&lt;/span&gt;'</span>;
+    el.className = <span class="t-str2">'ms-popup ms-in'</span>;
+    el.style.display = <span class="t-str2">'flex'</span>;
+    setTimeout(<span class="t-kw">function</span>() {
+      el.className = <span class="t-str2">'ms-popup ms-out'</span>;
+      setTimeout(<span class="t-kw">function</span>() { el.style.display=<span class="t-str2">'none'</span>; },450);
+    }, 1000);
+  }
+
+  <span class="t-cmt">/* ── CORE CLICK HANDLER ───────────────────────────────────────────────── */</span>
+  <span class="t-kw">function</span> <span class="t-fn">handleClick</span>(idx) {
+    <span class="t-kw">if</span> (answered) <span class="t-kw">return</span>;
+    <span class="t-kw">if</span> (wrongClicked[idx]) <span class="t-kw">return</span>;   <span class="t-cmt">// already wrong — ignore</span>
+
+    <span class="t-kw">var</span> el = optionEls[idx];
+    <span class="t-kw">if</span> (!el) <span class="t-kw">return</span>;
+
+    <span class="t-cmt">/* ── CORRECT ANSWER DETECTION ───────────────────────────────────────
+       The CorrectOption field holds the EXACT TEXT of the correct answer.
+       We compare the stored innerHTML of each option against correctText.
+    ───────────────────────────────────────────────────────────────────── */</span>
+    <span class="t-kw">var</span> optHTML = el.querySelector(<span class="t-str2">'.opt-text-inner'</span>).innerHTML;
+    <span class="t-kw">var</span> isCorrect = (optHTML === correctText);
+
+    <span class="t-kw">if</span> (isCorrect) {
+      <span class="t-cmt">// ✅ CORRECT</span>
+      answered = <span class="t-kw">true</span>;
+      el.className = <span class="t-str2">'mcq-opt opt-correct'</span>;
+      el.querySelector(<span class="t-str2">'.opt-icon'</span>).textContent = <span class="t-str2">'✓'</span>;
+      el.setAttribute(<span class="t-str2">'aria-pressed'</span>, <span class="t-str2">'true'</span>);
+
+      <span class="t-cmt">/* lock all remaining options */</span>
+      optionEls.forEach(<span class="t-kw">function</span>(o,i) {
+        <span class="t-kw">if</span> (i !== idx) { o.classList.add(<span class="t-str2">'opt-disabled'</span>); o.setAttribute(<span class="t-str2">'aria-disabled'</span>,<span class="t-str2">'true'</span>); }
+      });
+
+      <span class="t-cmt">/* streak */</span>
+      <span class="t-kw">var</span> streak = getStreak() + 1;
+      setStreak(streak);
+      renderStreak(streak);
+
+      <span class="t-cmt">/* streak pulse */</span>
+      <span class="t-kw">var</span> pill = document.getElementById(<span class="t-str2">'streakPill'</span>);
+      <span class="t-kw">if</span> (pill) {
+        pill.classList.add(<span class="t-str2">'streak-pulse'</span>);
+        setTimeout(<span class="t-kw">function</span>() { pill.classList.remove(<span class="t-str2">'streak-pulse'</span>); },600);
+      }
+
+      <span class="t-cmt">/* motivational popup */</span>
+      showMotPopup(MOTIVATIONS[Math.floor(Math.random()*MOTIVATIONS.length)], <span class="t-str2">'mot-ok'</span>);
+      checkMilestone(streak);
+      playCorrectSound();
+
+      <span class="t-cmt">/* hint */</span>
+      <span class="t-kw">var</span> hint = document.getElementById(<span class="t-str2">'mcqHint'</span>);
+      <span class="t-kw">if</span> (hint) { hint.textContent = <span class="t-str2">'✅ Correct! Revealing answer…'</span>; hint.className=<span class="t-str2">'mcq-hint hint-ok'</span>; }
+
+      <span class="t-cmt">/* flip card — try all Anki bridge methods */</span>
+      setTimeout(<span class="t-kw">function</span>() {
+        <span class="t-kw">if</span> (<span class="t-kw">typeof</span> pycmd !== <span class="t-str2">'undefined'</span>) {
+          pycmd(<span class="t-str2">'ans'</span>);
+        } <span class="t-kw">else if</span> (<span class="t-kw">typeof</span> AnkiDroidJS !== <span class="t-str2">'undefined'</span>) {
+          AnkiDroidJS.markCardAsAnswered();
+        } <span class="t-kw">else if</span> (<span class="t-kw">typeof</span> webkit !== <span class="t-str2">'undefined'</span> &amp;&amp;
+                   webkit.messageHandlers &amp;&amp; webkit.messageHandlers.cb) {
+          webkit.messageHandlers.cb.postMessage(<span class="t-str2">'ans'</span>);
+        } <span class="t-kw">else</span> {
+          <span class="t-cmt">/* Fallback: look for Anki's show-answer button */</span>
+          <span class="t-kw">var</span> btn = document.getElementById(<span class="t-str2">'ansbut'</span>) ||
+                    document.querySelector(<span class="t-str2">'.answer-button'</span>) ||
+                    document.querySelector(<span class="t-str2">'[id*="ans"]'</span>);
+          <span class="t-kw">if</span> (btn) btn.click();
+        }
+      }, 750);
+
+    } <span class="t-kw">else</span> {
+      <span class="t-cmt">// ❌ WRONG</span>
+      wrongClicked[idx] = <span class="t-kw">true</span>;
+      el.className = <span class="t-str2">'mcq-opt opt-wrong'</span>;
+      el.querySelector(<span class="t-str2">'.opt-icon'</span>).textContent = <span class="t-str2">'✗'</span>;
+      el.setAttribute(<span class="t-str2">'aria-pressed'</span>, <span class="t-str2">'true'</span>);
+      el.setAttribute(<span class="t-str2">'aria-disabled'</span>, <span class="t-str2">'true'</span>);
+      el.classList.add(<span class="t-str2">'opt-disabled'</span>);
+
+      <span class="t-cmt">/* reset streak */</span>
+      setStreak(0); renderStreak(0);
+
+      playWrongSound();
+      showMotPopup(<span class="t-str2">'❌ Try Again!'</span>, <span class="t-str2">'mot-bad'</span>);
+
+      <span class="t-kw">var</span> hint = document.getElementById(<span class="t-str2">'mcqHint'</span>);
+      <span class="t-kw">if</span> (hint) { hint.textContent = <span class="t-str2">'❌ Incorrect — keep trying!'</span>; hint.className=<span class="t-str2">'mcq-hint hint-bad'</span>; }
+    }
+  }
+
+  <span class="t-cmt">/* ── RENDER OPTIONS ───────────────────────────────────────────────────── */</span>
+  <span class="t-kw">function</span> <span class="t-fn">renderOptions</span>(options) {
+    <span class="t-kw">var</span> container = document.getElementById(<span class="t-str2">'mcqOptions'</span>);
+    <span class="t-kw">if</span> (!container) <span class="t-kw">return</span>;
+    container.innerHTML = <span class="t-str2">''</span>;
+    optionEls = [];
+    options.forEach(<span class="t-kw">function</span>(opt, i) {
+      <span class="t-kw">var</span> btn = document.createElement(<span class="t-str2">'div'</span>);
+      btn.className = <span class="t-str2">'mcq-opt'</span>;
+      btn.setAttribute(<span class="t-str2">'role'</span>, <span class="t-str2">'button'</span>);
+      btn.setAttribute(<span class="t-str2">'tabindex'</span>, <span class="t-str2">'0'</span>);
+      btn.setAttribute(<span class="t-str2">'aria-label'</span>, <span class="t-str2">'Option '</span> + LETTERS[i]);
+      btn.setAttribute(<span class="t-str2">'aria-pressed'</span>, <span class="t-str2">'false'</span>);
+      btn.innerHTML =
+        <span class="t-str2">'&lt;span class="opt-letter"&gt;'</span> + LETTERS[i] + <span class="t-str2">'&lt;/span&gt;'</span> +
+        <span class="t-str2">'&lt;span class="opt-text"&gt;&lt;span class="opt-text-inner"&gt;'</span> + opt + <span class="t-str2">'&lt;/span&gt;&lt;/span&gt;'</span> +
+        <span class="t-str2">'&lt;span class="opt-icon"&gt;&lt;/span&gt;'</span>;
+      (<span class="t-kw">function</span>(idx){ btn.addEventListener(<span class="t-str2">'click'</span>, <span class="t-kw">function</span>(){ handleClick(idx); }); })(i);
+      btn.addEventListener(<span class="t-str2">'keydown'</span>, (<span class="t-kw">function</span>(idx){ <span class="t-kw">return function</span>(e){
+        <span class="t-kw">if</span> (e.key===<span class="t-str2">'Enter'</span>||e.key===<span class="t-str2">' '</span>) { e.preventDefault(); handleClick(idx); }
+      }; })(i));
+      container.appendChild(btn);
+      optionEls.push(btn);
+    });
+  }
+
+  <span class="t-cmt">/* ── INIT ─────────────────────────────────────────────────────────────── */</span>
+  <span class="t-kw">function</span> <span class="t-fn">init</span>() {
+    <span class="t-kw">var</span> dQ = document.getElementById(<span class="t-str2">'dQ'</span>),
+        d1 = document.getElementById(<span class="t-str2">'d1'</span>),
+        d2 = document.getElementById(<span class="t-str2">'d2'</span>),
+        d3 = document.getElementById(<span class="t-str2">'d3'</span>),
+        d4 = document.getElementById(<span class="t-str2">'d4'</span>),
+        dC = document.getElementById(<span class="t-str2">'dC'</span>);
+
+    <span class="t-kw">if</span> (!dQ||!d1||!dC) <span class="t-kw">return</span>;
+
+    <span class="t-cmt">/* populate question */</span>
+    <span class="t-kw">var</span> qEl = document.getElementById(<span class="t-str2">'mcqQuestion'</span>);
+    <span class="t-kw">if</span> (qEl) qEl.innerHTML = dQ.innerHTML.trim();
+
+    <span class="t-cmt">/* ── THE CORRECT ANSWER KEY ─────────────────────────────────────────
+       correctText = the innerHTML of the CorrectOption field.
+       This MUST match one of the option HTML strings exactly.
+       The user puts the exact option text into CorrectOption.
+    ──────────────────────────────────────────────────────────────── */</span>
+    correctText = dC.innerHTML.trim();
+
+    <span class="t-cmt">/* collect non-empty options */</span>
+    <span class="t-kw">var</span> raw = [d1,d2,d3,d4].map(<span class="t-kw">function</span>(el){ <span class="t-kw">return</span> el.innerHTML.trim(); })
+                            .filter(<span class="t-kw">function</span>(t){ <span class="t-kw">return</span> t !== <span class="t-str2">''</span>; });
+
+    <span class="t-kw">if</span> (raw.length === 0) <span class="t-kw">return</span>;
+    <span class="t-kw">if</span> (!correctText) {
+      console.warn(<span class="t-str2">'MCQ: CorrectOption field is empty!'</span>); <span class="t-kw">return</span>;
+    }
+
+    <span class="t-cmt">/* shuffle */</span>
+    <span class="t-kw">var</span> options = raw.slice();
+    <span class="t-kw">for</span> (<span class="t-kw">var</span> i=options.length-1; i>0; i--) {
+      <span class="t-kw">var</span> j = Math.floor(Math.random()*(i+1));
+      <span class="t-kw">var</span> tmp = options[i]; options[i]=options[j]; options[j]=tmp;
+    }
+
+    renderOptions(options);
+    renderStreak(getStreak());
+  }
+
+  <span class="t-kw">if</span> (document.readyState === <span class="t-str2">'loading'</span>) {
+    document.addEventListener(<span class="t-str2">'DOMContentLoaded'</span>, <span class="t-kw">function</span>() {
+      requestAnimationFrame(init);
+    });
+  } <span class="t-kw">else</span> {
+    requestAnimationFrame(init);
+  }
+
+})();
+<span class="t-tag">&lt;/script&gt;</span></pre></div>
+  </div>
+</div>
+
+<!-- ═══════════════ SECTION 2 — BACK TEMPLATE ═══════════════ -->
+<div>
+  <div class="sec-hdr">
+    <div class="sec-icon si-green">②</div>
+    <div>
+      <div class="sec-label">Section 2 of 3 — Paste into: Cards → Back Template</div>
+      <div class="sec-title">Back Template</div>
+      <div class="sec-sub">Shows question recap, all options highlighted, explanation, and streak</div>
+    </div>
+  </div>
+  <div class="code-card">
+    <div class="code-hdr">
+      <div class="code-hdr-left"><span class="lang-dot dot-html"></span><span class="code-hdr-name">back_template.html</span></div>
+      <button class="copy-btn" onclick="copyEl('back-code',this)">⧉ Copy</button>
+    </div>
+    <div class="code-body"><pre id="back-code"><span class="t-cmt">&lt;!--
+  ╔══════════════════════════════════════════════════════════════════════╗
+  ║  PREMIUM ANKI MCQ CARD — BACK TEMPLATE  (Award Edition v3)         ║
+  ╚══════════════════════════════════════════════════════════════════════╝
+--&gt;</span>
+
+<span class="t-cmt">&lt;!-- ── HIDDEN DATA ────────────────────────────────────────────────────── --&gt;</span>
+<span class="t-tag">&lt;div</span> <span class="t-attr">id</span>=<span class="t-str">"mcqBackData"</span> <span class="t-attr">style</span>=<span class="t-str">"display:none"</span> <span class="t-attr">aria-hidden</span>=<span class="t-str">"true"</span><span class="t-tag">&gt;</span>
+  <span class="t-tag">&lt;span</span> <span class="t-attr">id</span>=<span class="t-str">"bdQ"</span><span class="t-tag">&gt;</span><span class="t-anki">{{Question}}</span><span class="t-tag">&lt;/span&gt;</span>
+  <span class="t-tag">&lt;span</span> <span class="t-attr">id</span>=<span class="t-str">"bd1"</span><span class="t-tag">&gt;</span><span class="t-anki">{{Option1}}</span><span class="t-tag">&lt;/span&gt;</span>
+  <span class="t-tag">&lt;span</span> <span class="t-attr">id</span>=<span class="t-str">"bd2"</span><span class="t-tag">&gt;</span><span class="t-anki">{{Option2}}</span><span class="t-tag">&lt;/span&gt;</span>
+  <span class="t-tag">&lt;span</span> <span class="t-attr">id</span>=<span class="t-str">"bd3"</span><span class="t-tag">&gt;</span><span class="t-anki">{{Option3}}</span><span class="t-tag">&lt;/span&gt;</span>
+  <span class="t-tag">&lt;span</span> <span class="t-attr">id</span>=<span class="t-str">"bd4"</span><span class="t-tag">&gt;</span><span class="t-anki">{{Option4}}</span><span class="t-tag">&lt;/span&gt;</span>
+  <span class="t-tag">&lt;span</span> <span class="t-attr">id</span>=<span class="t-str">"bdC"</span><span class="t-tag">&gt;</span><span class="t-anki">{{CorrectOption}}</span><span class="t-tag">&lt;/span&gt;</span>
+<span class="t-tag">&lt;/div&gt;</span>
+
+<span class="t-cmt">&lt;!-- ── BACK CARD ─────────────────────────────────────────────────────── --&gt;</span>
+<span class="t-tag">&lt;div</span> <span class="t-attr">class</span>=<span class="t-str">"mcq-card mcq-back"</span> <span class="t-attr">id</span>=<span class="t-str">"mcqBackCard"</span> <span class="t-attr">role</span>=<span class="t-str">"main"</span><span class="t-tag">&gt;</span>
+
+  <span class="t-cmt">&lt;!-- success banner --&gt;</span>
+  <span class="t-tag">&lt;div</span> <span class="t-attr">class</span>=<span class="t-str">"back-success-banner"</span> <span class="t-attr">role</span>=<span class="t-str">"status"</span><span class="t-tag">&gt;</span>
+    <span class="t-tag">&lt;span</span> <span class="t-attr">class</span>=<span class="t-str">"bsb-icon"</span><span class="t-tag">&gt;</span>✅<span class="t-tag">&lt;/span&gt;</span>
+    <span class="t-tag">&lt;span</span> <span class="t-attr">class</span>=<span class="t-str">"bsb-text"</span><span class="t-tag">&gt;</span>Correct Answer!<span class="t-tag">&lt;/span&gt;</span>
+    <span class="t-tag">&lt;div</span> <span class="t-attr">class</span>=<span class="t-str">"bsb-streak"</span> <span class="t-attr">id</span>=<span class="t-str">"backStreakBadge"</span>
+         <span class="t-attr">role</span>=<span class="t-str">"status"</span> <span class="t-attr">aria-label</span>=<span class="t-str">"Streak"</span><span class="t-tag">&gt;</span>
+      🔥 <span class="t-tag">&lt;span</span> <span class="t-attr">id</span>=<span class="t-str">"backStreakNum"</span><span class="t-tag">&gt;</span>0<span class="t-tag">&lt;/span&gt;</span>
+    <span class="t-tag">&lt;/div&gt;</span>
+  <span class="t-tag">&lt;/div&gt;</span>
+
+  <span class="t-cmt">&lt;!-- question recap --&gt;</span>
+  <span class="t-tag">&lt;div</span> <span class="t-attr">class</span>=<span class="t-str">"back-section-label"</span><span class="t-tag">&gt;</span>QUESTION<span class="t-tag">&lt;/div&gt;</span>
+  <span class="t-tag">&lt;div</span> <span class="t-attr">class</span>=<span class="t-str">"back-q-box"</span> <span class="t-attr">id</span>=<span class="t-str">"backQuestion"</span><span class="t-tag">&gt;&lt;/div&gt;</span>
+
+  <span class="t-cmt">&lt;!-- all options --&gt;</span>
+  <span class="t-tag">&lt;div</span> <span class="t-attr">class</span>=<span class="t-str">"back-section-label"</span><span class="t-tag">&gt;</span>OPTIONS<span class="t-tag">&lt;/div&gt;</span>
+  <span class="t-tag">&lt;div</span> <span class="t-attr">class</span>=<span class="t-str">"back-options-list"</span> <span class="t-attr">id</span>=<span class="t-str">"backOptions"</span> <span class="t-attr">role</span>=<span class="t-str">"list"</span><span class="t-tag">&gt;&lt;/div&gt;</span>
+
+  <span class="t-cmt">&lt;!-- explanation --&gt;</span>
+  <span class="t-tag">&lt;div</span> <span class="t-attr">class</span>=<span class="t-str">"back-section-label"</span><span class="t-tag">&gt;</span>EXPLANATION<span class="t-tag">&lt;/div&gt;</span>
+  <span class="t-tag">&lt;div</span> <span class="t-attr">class</span>=<span class="t-str">"back-explanation"</span><span class="t-tag">&gt;</span>
+    <span class="t-anki">{{Explanation}}</span>
+  <span class="t-tag">&lt;/div&gt;</span>
+
+<span class="t-tag">&lt;/div&gt;</span>
+
+<span class="t-tag">&lt;script&gt;</span>
+<span class="t-cmt">/* ═══════════════════════════════════════════════════════════════════════
+   BACK SIDE INIT
+   Reads CorrectOption text, highlights matching option in list.
+════════════════════════════════════════════════════════════════════════ */</span>
+(<span class="t-kw">function</span>() {
+  <span class="t-str">'use strict'</span>;
+  <span class="t-kw">var</span> STREAK_KEY = <span class="t-str2">'ankiMCQ_streak_v3'</span>;
+  <span class="t-kw">var</span> LETTERS    = [<span class="t-str2">'A'</span>,<span class="t-str2">'B'</span>,<span class="t-str2">'C'</span>,<span class="t-str2">'D'</span>];
+
+  <span class="t-kw">function</span> <span class="t-fn">getStreak</span>() {
+    <span class="t-kw">try</span> { <span class="t-kw">var</span> v=localStorage.getItem(STREAK_KEY); <span class="t-kw">return</span> v ? +v : 0; }
+    <span class="t-kw">catch</span>(e){ <span class="t-kw">return</span> 0; }
+  }
+
+  <span class="t-kw">function</span> <span class="t-fn">run</span>() {
+    <span class="t-kw">var</span> bdQ=document.getElementById(<span class="t-str2">'bdQ'</span>),
+        bd1=document.getElementById(<span class="t-str2">'bd1'</span>),
+        bd2=document.getElementById(<span class="t-str2">'bd2'</span>),
+        bd3=document.getElementById(<span class="t-str2">'bd3'</span>),
+        bd4=document.getElementById(<span class="t-str2">'bd4'</span>),
+        bdC=document.getElementById(<span class="t-str2">'bdC'</span>);
+    <span class="t-kw">if</span> (!bdC) <span class="t-kw">return</span>;
+
+    <span class="t-cmt">/* question */</span>
+    <span class="t-kw">var</span> qEl=document.getElementById(<span class="t-str2">'backQuestion'</span>);
+    <span class="t-kw">if</span> (qEl &amp;&amp; bdQ) qEl.innerHTML=bdQ.innerHTML.trim();
+
+    <span class="t-cmt">/* correct text — must match exactly */</span>
+    <span class="t-kw">var</span> correctText = bdC.innerHTML.trim();
+
+    <span class="t-cmt">/* options (keep original order on back) */</span>
+    <span class="t-kw">var</span> opts = [bd1,bd2,bd3,bd4]
+      .map(<span class="t-kw">function</span>(el){ <span class="t-kw">return</span> el ? el.innerHTML.trim() : <span class="t-str2">''</span>; })
+      .filter(<span class="t-kw">function</span>(t){ <span class="t-kw">return</span> t !== <span class="t-str2">''</span>; });
+
+    <span class="t-kw">var</span> container = document.getElementById(<span class="t-str2">'backOptions'</span>);
+    <span class="t-kw">if</span> (!container) <span class="t-kw">return</span>;
+    container.innerHTML = <span class="t-str2">''</span>;
+
+    opts.forEach(<span class="t-kw">function</span>(text, i) {
+      <span class="t-kw">var</span> isCorrect = (text === correctText);
+      <span class="t-kw">var</span> row = document.createElement(<span class="t-str2">'div'</span>);
+      row.className = <span class="t-str2">'back-opt-row'</span> + (isCorrect ? <span class="t-str2">' back-opt-correct'</span> : <span class="t-str2">''</span>);
+      row.setAttribute(<span class="t-str2">'role'</span>, <span class="t-str2">'listitem'</span>);
+      row.innerHTML =
+        <span class="t-str2">'&lt;span class="back-ltr"&gt;'</span> + LETTERS[i] + <span class="t-str2">'&lt;/span&gt;'</span> +
+        <span class="t-str2">'&lt;span class="back-opt-text"&gt;'</span> + text + <span class="t-str2">'&lt;/span&gt;'</span> +
+        (isCorrect ? <span class="t-str2">'&lt;span class="back-opt-tick"&gt;✓&lt;/span&gt;'</span> : <span class="t-str2">''</span>);
+      container.appendChild(row);
+    });
+
+    <span class="t-cmt">/* streak */</span>
+    <span class="t-kw">var</span> streak = getStreak();
+    <span class="t-kw">var</span> numEl   = document.getElementById(<span class="t-str2">'backStreakNum'</span>);
+    <span class="t-kw">if</span> (numEl) numEl.textContent = streak;
+    <span class="t-kw">var</span> badge   = document.getElementById(<span class="t-str2">'backStreakBadge'</span>);
+    <span class="t-kw">if</span> (badge &amp;&amp; streak > 0) badge.classList.add(<span class="t-str2">'badge-live'</span>);
+  }
+
+  <span class="t-kw">if</span> (document.readyState === <span class="t-str2">'loading'</span>) {
+    document.addEventListener(<span class="t-str2">'DOMContentLoaded'</span>, <span class="t-kw">function</span>() { requestAnimationFrame(run); });
+  } <span class="t-kw">else</span> {
+    requestAnimationFrame(run);
+  }
+})();
+<span class="t-tag">&lt;/script&gt;</span></pre></div>
+  </div>
+</div>
+
+<!-- ═══════════════ SECTION 3 — CSS ═══════════════ -->
+<div>
+  <div class="sec-hdr">
+    <div class="sec-icon si-red">③</div>
+    <div>
+      <div class="sec-label">Section 3 of 3 — Paste into: Cards → Styling</div>
+      <div class="sec-title">Card Styling (CSS)</div>
+      <div class="sec-sub">Replaces all existing content in the Styling tab</div>
+    </div>
+  </div>
+  <div class="code-card">
+    <div class="code-hdr">
+      <div class="code-hdr-left"><span class="lang-dot dot-css"></span><span class="code-hdr-name">styling.css</span></div>
+      <button class="copy-btn" onclick="copyEl('css-code',this)">⧉ Copy</button>
+    </div>
+    <div class="code-body"><pre id="css-code"><span class="t-cmt">/*
+  ╔══════════════════════════════════════════════════════════════════════╗
+  ║  PREMIUM ANKI MCQ CARD — STYLING  (Award Edition v3)                ║
+  ║  Light + Dark · Mobile · Accessible · Zero Dependencies             ║
+  ╚══════════════════════════════════════════════════════════════════════╝
+*/</span>
+
+<span class="t-cmt">/* ════════════════════════════════════════════════════════════════════
+   DESIGN TOKENS — LIGHT MODE
+════════════════════════════════════════════════════════════════════ */</span>
+<span class="t-sel">.card</span> {
+  <span class="t-cmt">/* colours */</span>
+  <span class="t-prop">--bg</span>:       <span class="t-val">#f0f4ff</span>;
+  <span class="t-prop">--surf</span>:     <span class="t-val">#ffffff</span>;
+  <span class="t-prop">--surf2</span>:    <span class="t-val">#eaeefc</span>;
+  <span class="t-prop">--bd</span>:       <span class="t-val">#d8deef</span>;
+  <span class="t-prop">--tx</span>:       <span class="t-val">#18213e</span>;
+  <span class="t-prop">--tm</span>:       <span class="t-val">#68748f</span>;
+  <span class="t-cmt">/* accent — purple */</span>
+  <span class="t-prop">--ac</span>:       <span class="t-val">#5b52e7</span>;
+  <span class="t-prop">--ab</span>:       <span class="t-val">rgba(91,82,231,.09)</span>;
+  <span class="t-prop">--abr</span>:      <span class="t-val">rgba(91,82,231,.26)</span>;
+  <span class="t-prop">--act</span>:      <span class="t-val">#5b52e7</span>;
+  <span class="t-cmt">/* green */</span>
+  <span class="t-prop">--g</span>:        <span class="t-val">#00b870</span>;
+  <span class="t-prop">--gb</span>:       <span class="t-val">rgba(0,184,112,.10)</span>;
+  <span class="t-prop">--gbr</span>:      <span class="t-val">rgba(0,184,112,.32)</span>;
+  <span class="t-cmt">/* red */</span>
+  <span class="t-prop">--r</span>:        <span class="t-val">#e32047</span>;
+  <span class="t-prop">--rb</span>:       <span class="t-val">rgba(227,32,71,.09)</span>;
+  <span class="t-prop">--rbr</span>:      <span class="t-val">rgba(227,32,71,.30)</span>;
+  <span class="t-cmt">/* streak */</span>
+  <span class="t-prop">--sk</span>:       <span class="t-val">rgba(245,130,0,.10)</span>;
+  <span class="t-prop">--skb</span>:      <span class="t-val">rgba(245,130,0,.28)</span>;
+  <span class="t-prop">--skt</span>:      <span class="t-val">#c97000</span>;
+  <span class="t-cmt">/* shadow / shape */</span>
+  <span class="t-prop">--sh</span>:       <span class="t-val">0 4px 24px rgba(91,82,231,.12)</span>;
+  <span class="t-prop">--r1</span>:       <span class="t-val">20px</span>;
+  <span class="t-prop">--r2</span>:       <span class="t-val">13px</span>;
+  <span class="t-prop">--r3</span>:       <span class="t-val">9px</span>;
+
+  <span class="t-cmt">/* base */</span>
+  <span class="t-prop">font-family</span>:    <span class="t-val">'Segoe UI', system-ui, -apple-system, 'Helvetica Neue', Arial, sans-serif</span>;
+  <span class="t-prop">font-size</span>:      <span class="t-val">16px</span>;
+  <span class="t-prop">background</span>:     <span class="t-val">var(--bg)</span>;
+  <span class="t-prop">color</span>:          <span class="t-val">var(--tx)</span>;
+  <span class="t-prop">margin</span>:         <span class="t-val">0</span>;
+  <span class="t-prop">padding</span>:        <span class="t-val">0</span>;
+  <span class="t-prop">min-height</span>:     <span class="t-val">100vh</span>;
+  <span class="t-prop">display</span>:        <span class="t-val">flex</span>;
+  <span class="t-prop">align-items</span>:    <span class="t-val">flex-start</span>;
+  <span class="t-prop">justify-content</span>:<span class="t-val">center</span>;
+}
+
+<span class="t-cmt">/* ════════════════════════════════════════════════════════════════════
+   DARK MODE — Anki applies .nightMode class automatically
+════════════════════════════════════════════════════════════════════ */</span>
+<span class="t-sel">.card.nightMode</span>, <span class="t-sel">.nightMode .card</span> {
+  <span class="t-prop">--bg</span>:    <span class="t-val">#0f1117</span>;
+  <span class="t-prop">--surf</span>:  <span class="t-val">#1a1d27</span>;
+  <span class="t-prop">--surf2</span>: <span class="t-val">#22263a</span>;
+  <span class="t-prop">--bd</span>:    <span class="t-val">#2e3349</span>;
+  <span class="t-prop">--tx</span>:    <span class="t-val">#e8eaf6</span>;
+  <span class="t-prop">--tm</span>:    <span class="t-val">#8a8fad</span>;
+  <span class="t-prop">--ac</span>:    <span class="t-val">#7c73f5</span>;
+  <span class="t-prop">--ab</span>:    <span class="t-val">rgba(124,115,245,.12)</span>;
+  <span class="t-prop">--abr</span>:   <span class="t-val">rgba(124,115,245,.30)</span>;
+  <span class="t-prop">--act</span>:   <span class="t-val">#a89dff</span>;
+  <span class="t-prop">--g</span>:     <span class="t-val">#00d084</span>;
+  <span class="t-prop">--gb</span>:    <span class="t-val">rgba(0,208,132,.12)</span>;
+  <span class="t-prop">--gbr</span>:   <span class="t-val">rgba(0,208,132,.32)</span>;
+  <span class="t-prop">--r</span>:     <span class="t-val">#ff4d6d</span>;
+  <span class="t-prop">--rb</span>:    <span class="t-val">rgba(255,77,109,.12)</span>;
+  <span class="t-prop">--rbr</span>:   <span class="t-val">rgba(255,77,109,.32)</span>;
+  <span class="t-prop">--sk</span>:    <span class="t-val">rgba(255,165,0,.10)</span>;
+  <span class="t-prop">--skb</span>:   <span class="t-val">rgba(255,165,0,.28)</span>;
+  <span class="t-prop">--skt</span>:   <span class="t-val">#ffa500</span>;
+  <span class="t-prop">--sh</span>:    <span class="t-val">0 8px 32px rgba(0,0,0,.5)</span>;
+}
+<span class="t-at">@media (prefers-color-scheme: dark)</span> {
+  <span class="t-sel">.card</span> {
+    <span class="t-prop">--bg</span>:    <span class="t-val">#0f1117</span>;  <span class="t-prop">--surf</span>:  <span class="t-val">#1a1d27</span>;  <span class="t-prop">--surf2</span>: <span class="t-val">#22263a</span>;
+    <span class="t-prop">--bd</span>:    <span class="t-val">#2e3349</span>;  <span class="t-prop">--tx</span>:    <span class="t-val">#e8eaf6</span>;  <span class="t-prop">--tm</span>:    <span class="t-val">#8a8fad</span>;
+    <span class="t-prop">--ac</span>:    <span class="t-val">#7c73f5</span>;  <span class="t-prop">--ab</span>:    <span class="t-val">rgba(124,115,245,.12)</span>;
+    <span class="t-prop">--abr</span>:   <span class="t-val">rgba(124,115,245,.30)</span>;  <span class="t-prop">--act</span>:   <span class="t-val">#a89dff</span>;
+    <span class="t-prop">--g</span>:     <span class="t-val">#00d084</span>;  <span class="t-prop">--gb</span>:    <span class="t-val">rgba(0,208,132,.12)</span>;  <span class="t-prop">--gbr</span>:   <span class="t-val">rgba(0,208,132,.32)</span>;
+    <span class="t-prop">--r</span>:     <span class="t-val">#ff4d6d</span>;  <span class="t-prop">--rb</span>:    <span class="t-val">rgba(255,77,109,.12)</span>;  <span class="t-prop">--rbr</span>:   <span class="t-val">rgba(255,77,109,.32)</span>;
+    <span class="t-prop">--sk</span>:    <span class="t-val">rgba(255,165,0,.10)</span>;  <span class="t-prop">--skb</span>:   <span class="t-val">rgba(255,165,0,.28)</span>;  <span class="t-prop">--skt</span>:   <span class="t-val">#ffa500</span>;
+    <span class="t-prop">--sh</span>:    <span class="t-val">0 8px 32px rgba(0,0,0,.5)</span>;
+  }
+}
+
+<span class="t-cmt">/* ════════════════════════════════════════════════════════════════════
+   CARD CONTAINER
+════════════════════════════════════════════════════════════════════ */</span>
+<span class="t-sel">.mcq-card</span> {
+  <span class="t-prop">width</span>:          <span class="t-val">100%</span>;
+  <span class="t-prop">max-width</span>:      <span class="t-val">620px</span>;
+  <span class="t-prop">margin</span>:         <span class="t-val">0 auto</span>;
+  <span class="t-prop">padding</span>:        <span class="t-val">22px 18px 32px</span>;
+  <span class="t-prop">box-sizing</span>:     <span class="t-val">border-box</span>;
+  <span class="t-prop">display</span>:        <span class="t-val">flex</span>;
+  <span class="t-prop">flex-direction</span>: <span class="t-val">column</span>;
+  <span class="t-prop">gap</span>:            <span class="t-val">0</span>;
+  <span class="t-prop">position</span>:       <span class="t-val">relative</span>;
+}
+
+<span class="t-cmt">/* ── HEADER ──────────────────────────────────────────────────────────── */</span>
+<span class="t-sel">.mcq-header</span> {
+  <span class="t-prop">display</span>:         <span class="t-val">flex</span>;
+  <span class="t-prop">align-items</span>:     <span class="t-val">center</span>;
+  <span class="t-prop">justify-content</span>: <span class="t-val">space-between</span>;
+  <span class="t-prop">margin-bottom</span>:   <span class="t-val">16px</span>;
+}
+<span class="t-sel">.mcq-badge</span> {
+  <span class="t-prop">background</span>:      <span class="t-val">var(--ab)</span>;
+  <span class="t-prop">border</span>:          <span class="t-val">1px solid var(--abr)</span>;
+  <span class="t-prop">border-radius</span>:   <span class="t-val">999px</span>;
+  <span class="t-prop">padding</span>:         <span class="t-val">4px 14px</span>;
+  <span class="t-prop">font-size</span>:       <span class="t-val">10px</span>;
+  <span class="t-prop">font-weight</span>:     <span class="t-val">800</span>;
+  <span class="t-prop">letter-spacing</span>:  <span class="t-val">.1em</span>;
+  <span class="t-prop">text-transform</span>:  <span class="t-val">uppercase</span>;
+  <span class="t-prop">color</span>:           <span class="t-val">var(--act)</span>;
+}
+<span class="t-sel">.streak-pill</span> {
+  <span class="t-prop">display</span>:        <span class="t-val">inline-flex</span>;
+  <span class="t-prop">align-items</span>:    <span class="t-val">center</span>;
+  <span class="t-prop">gap</span>:            <span class="t-val">4px</span>;
+  <span class="t-prop">background</span>:     <span class="t-val">var(--sk)</span>;
+  <span class="t-prop">border</span>:         <span class="t-val">1px solid var(--skb)</span>;
+  <span class="t-prop">border-radius</span>:  <span class="t-val">999px</span>;
+  <span class="t-prop">padding</span>:        <span class="t-val">5px 14px</span>;
+  <span class="t-prop">font-size</span>:      <span class="t-val">13px</span>;
+  <span class="t-prop">font-weight</span>:    <span class="t-val">800</span>;
+  <span class="t-prop">color</span>:          <span class="t-val">var(--skt)</span>;
+  <span class="t-prop">transition</span>:     <span class="t-val">transform .25s, box-shadow .25s</span>;
+}
+<span class="t-sel">.streak-pill.streak-on</span>   { <span class="t-prop">box-shadow</span>: <span class="t-val">0 0 10px rgba(255,140,0,.22)</span>; }
+<span class="t-sel">.streak-pill.streak-pulse</span>{ <span class="t-prop">transform</span>:<span class="t-val">scale(1.12)</span>; <span class="t-prop">box-shadow</span>:<span class="t-val">0 0 16px rgba(255,140,0,.4)</span>; }
+
+<span class="t-cmt">/* ── QUESTION ─────────────────────────────────────────────────────────── */</span>
+<span class="t-sel">.mcq-question</span> {
+  <span class="t-prop">font-size</span>:    <span class="t-val">clamp(15px, 4vw, 19px)</span>;
+  <span class="t-prop">font-weight</span>:  <span class="t-val">600</span>;
+  <span class="t-prop">line-height</span>:  <span class="t-val">1.6</span>;
+  <span class="t-prop">color</span>:        <span class="t-val">var(--tx)</span>;
+  <span class="t-prop">background</span>:   <span class="t-val">var(--surf)</span>;
+  <span class="t-prop">border</span>:       <span class="t-val">1px solid var(--bd)</span>;
+  <span class="t-prop">border-radius</span>:<span class="t-val">var(--r2)</span>;
+  <span class="t-prop">padding</span>:      <span class="t-val">16px 18px</span>;
+  <span class="t-prop">margin-bottom</span>:<span class="t-val">18px</span>;
+  <span class="t-prop">box-shadow</span>:   <span class="t-val">var(--sh)</span>;
+}
+
+<span class="t-cmt">/* ── OPTIONS ──────────────────────────────────────────────────────────── */</span>
+<span class="t-sel">.mcq-options</span> {
+  <span class="t-prop">display</span>:        <span class="t-val">flex</span>;
+  <span class="t-prop">flex-direction</span>: <span class="t-val">column</span>;
+  <span class="t-prop">gap</span>:            <span class="t-val">10px</span>;
+  <span class="t-prop">margin-bottom</span>:  <span class="t-val">12px</span>;
+}
+<span class="t-sel">.mcq-opt</span> {
+  <span class="t-prop">display</span>:       <span class="t-val">flex</span>;
+  <span class="t-prop">align-items</span>:   <span class="t-val">center</span>;
+  <span class="t-prop">gap</span>:           <span class="t-val">12px</span>;
+  <span class="t-prop">width</span>:         <span class="t-val">100%</span>;
+  <span class="t-prop">background</span>:    <span class="t-val">var(--surf)</span>;
+  <span class="t-prop">border</span>:        <span class="t-val">1.5px solid var(--bd)</span>;
+  <span class="t-prop">border-radius</span>: <span class="t-val">var(--r2)</span>;
+  <span class="t-prop">padding</span>:       <span class="t-val">14px 16px</span>;
+  <span class="t-prop">cursor</span>:        <span class="t-val">pointer</span>;
+  <span class="t-prop">text-align</span>:    <span class="t-val">left</span>;
+  <span class="t-prop">font-size</span>:     <span class="t-val">clamp(13px,3.5vw,15px)</span>;
+  <span class="t-prop">font-weight</span>:   <span class="t-val">500</span>;
+  <span class="t-prop">color</span>:         <span class="t-val">var(--tx)</span>;
+  <span class="t-prop">font-family</span>:   <span class="t-val">inherit</span>;
+  <span class="t-prop">transition</span>:    <span class="t-val">border-color .18s, background .18s, transform .12s, box-shadow .18s</span>;
+  <span class="t-prop">-webkit-tap-highlight-color</span>: <span class="t-val">transparent</span>;
+  <span class="t-prop">user-select</span>:   <span class="t-val">none</span>;
+  <span class="t-prop">position</span>:      <span class="t-val">relative</span>;
+  <span class="t-prop">overflow</span>:      <span class="t-val">hidden</span>;
+  <span class="t-prop">box-shadow</span>:    <span class="t-val">0 1px 3px rgba(0,0,0,.05)</span>;
+  <span class="t-prop">min-height</span>:    <span class="t-val">54px</span>; <span class="t-cmt">/* WCAG large touch target */</span>
+}
+<span class="t-sel">.mcq-opt:hover:not(.opt-disabled)</span> {
+  <span class="t-prop">border-color</span>: <span class="t-val">var(--ac)</span>;
+  <span class="t-prop">background</span>:   <span class="t-val">var(--ab)</span>;
+  <span class="t-prop">transform</span>:    <span class="t-val">translateY(-1px)</span>;
+  <span class="t-prop">box-shadow</span>:   <span class="t-val">0 5px 14px rgba(91,82,231,.14)</span>;
+}
+<span class="t-sel">.mcq-opt:active:not(.opt-disabled)</span> { <span class="t-prop">transform</span>:<span class="t-val">translateY(0)</span>; }
+<span class="t-sel">.mcq-opt:focus-visible</span>  { <span class="t-prop">outline</span>:<span class="t-val">2px solid var(--ac)</span>; <span class="t-prop">outline-offset</span>:<span class="t-val">2px</span>; }
+<span class="t-sel">.mcq-opt.opt-disabled</span>   { <span class="t-prop">cursor</span>:<span class="t-val">default</span>; <span class="t-prop">pointer-events</span>:<span class="t-val">none</span>; }
+
+<span class="t-cmt">/* ── CORRECT ──────────────────────────────────────────────────────────── */</span>
+<span class="t-sel">.mcq-opt.opt-correct</span> {
+  <span class="t-prop">border-color</span>: <span class="t-val">var(--g)</span>;
+  <span class="t-prop">background</span>:   <span class="t-val">var(--gb)</span>;
+  <span class="t-prop">box-shadow</span>:   <span class="t-val">0 0 0 2px var(--gbr), 0 5px 18px rgba(0,184,112,.18)</span>;
+  <span class="t-prop">animation</span>:    <span class="t-val">optPop .38s ease</span>;
+}
+<span class="t-sel">.mcq-opt.opt-correct .opt-letter</span> {
+  <span class="t-prop">background</span>:   <span class="t-val">var(--gb)</span>;
+  <span class="t-prop">border-color</span>: <span class="t-val">var(--g)</span>;
+  <span class="t-prop">color</span>:        <span class="t-val">var(--g)</span>;
+}
+<span class="t-sel">.mcq-opt.opt-correct .opt-icon</span> { <span class="t-prop">color</span>:<span class="t-val">var(--g)</span>; }
+
+<span class="t-cmt">/* ── WRONG ────────────────────────────────────────────────────────────── */</span>
+<span class="t-sel">.mcq-opt.opt-wrong</span> {
+  <span class="t-prop">border-color</span>: <span class="t-val">var(--r)</span>;
+  <span class="t-prop">background</span>:   <span class="t-val">var(--rb)</span>;
+  <span class="t-prop">box-shadow</span>:   <span class="t-val">0 0 0 2px var(--rbr)</span>;
+  <span class="t-prop">animation</span>:    <span class="t-val">optShake .42s cubic-bezier(.36,.07,.19,.97)</span>;
+}
+<span class="t-sel">.mcq-opt.opt-wrong .opt-letter</span> {
+  <span class="t-prop">background</span>:   <span class="t-val">var(--rb)</span>;
+  <span class="t-prop">border-color</span>: <span class="t-val">var(--r)</span>;
+  <span class="t-prop">color</span>:        <span class="t-val">var(--r)</span>;
+}
+<span class="t-sel">.mcq-opt.opt-wrong .opt-icon</span> { <span class="t-prop">color</span>:<span class="t-val">var(--r)</span>; }
+
+<span class="t-cmt">/* ── OPTION INTERNALS ─────────────────────────────────────────────────── */</span>
+<span class="t-sel">.opt-letter</span> {
+  <span class="t-prop">width</span>:         <span class="t-val">30px</span>; <span class="t-prop">height</span>:<span class="t-val">30px</span>; <span class="t-prop">min-width</span>:<span class="t-val">30px</span>;
+  <span class="t-prop">border-radius</span>: <span class="t-val">8px</span>;
+  <span class="t-prop">background</span>:    <span class="t-val">var(--ab)</span>;
+  <span class="t-prop">border</span>:        <span class="t-val">1px solid var(--abr)</span>;
+  <span class="t-prop">display</span>:       <span class="t-val">flex</span>; <span class="t-prop">align-items</span>:<span class="t-val">center</span>; <span class="t-prop">justify-content</span>:<span class="t-val">center</span>;
+  <span class="t-prop">font-size</span>:     <span class="t-val">12px</span>; <span class="t-prop">font-weight</span>:<span class="t-val">800</span>;
+  <span class="t-prop">color</span>:         <span class="t-val">var(--act)</span>;
+  <span class="t-prop">flex-shrink</span>:   <span class="t-val">0</span>;
+  <span class="t-prop">transition</span>:    <span class="t-val">all .18s</span>;
+}
+<span class="t-sel">.opt-text</span>  { <span class="t-prop">flex</span>:<span class="t-val">1</span>; <span class="t-prop">line-height</span>:<span class="t-val">1.45</span>; }
+<span class="t-sel">.opt-icon</span>  { <span class="t-prop">font-size</span>:<span class="t-val">16px</span>; <span class="t-prop">font-weight</span>:<span class="t-val">800</span>; <span class="t-prop">min-width</span>:<span class="t-val">22px</span>; <span class="t-prop">text-align</span>:<span class="t-val">center</span>; }
+
+<span class="t-cmt">/* ── HINT ─────────────────────────────────────────────────────────────── */</span>
+<span class="t-sel">.mcq-hint</span> {
+  <span class="t-prop">text-align</span>: <span class="t-val">center</span>; <span class="t-prop">font-size</span>:<span class="t-val">12px</span>; <span class="t-prop">font-weight</span>:<span class="t-val">500</span>;
+  <span class="t-prop">color</span>:<span class="t-val">var(--tm)</span>; <span class="t-prop">padding</span>:<span class="t-val">4px 0</span>; <span class="t-prop">transition</span>:<span class="t-val">color .2s</span>;
+}
+<span class="t-sel">.mcq-hint.hint-ok</span>  { <span class="t-prop">color</span>:<span class="t-val">var(--g)</span>; }
+<span class="t-sel">.mcq-hint.hint-bad</span> { <span class="t-prop">color</span>:<span class="t-val">var(--r)</span>; }
+
+<span class="t-cmt">/* ── MOTIVATIONAL POPUP ───────────────────────────────────────────────── */</span>
+<span class="t-sel">.mot-popup</span> {
+  <span class="t-prop">display</span>:        <span class="t-val">none</span>;
+  <span class="t-prop">position</span>:       <span class="t-val">fixed</span>;
+  <span class="t-prop">top</span>:            <span class="t-val">50%</span>; <span class="t-prop">left</span>:<span class="t-val">50%</span>;
+  <span class="t-prop">transform</span>:      <span class="t-val">translate(-50%,-50%) scale(.7)</span>;
+  <span class="t-prop">background</span>:     <span class="t-val">var(--g)</span>;
+  <span class="t-prop">color</span>:          <span class="t-val">#fff</span>;
+  <span class="t-prop">border-radius</span>:  <span class="t-val">18px</span>;
+  <span class="t-prop">padding</span>:        <span class="t-val">14px 30px</span>;
+  <span class="t-prop">font-size</span>:      <span class="t-val">18px</span>;
+  <span class="t-prop">font-weight</span>:    <span class="t-val">800</span>;
+  <span class="t-prop">text-align</span>:     <span class="t-val">center</span>;
+  <span class="t-prop">z-index</span>:        <span class="t-val">9999</span>;
+  <span class="t-prop">pointer-events</span>: <span class="t-val">none</span>;
+  <span class="t-prop">box-shadow</span>:     <span class="t-val">0 8px 36px rgba(0,0,0,.28)</span>;
+  <span class="t-prop">white-space</span>:    <span class="t-val">nowrap</span>;
+}
+<span class="t-sel">.mot-popup.mot-bad</span> { <span class="t-prop">background</span>:<span class="t-val">var(--r)</span>; }
+<span class="t-sel">.mot-popup.mot-in</span> {
+  <span class="t-prop">display</span>:   <span class="t-val">block</span>;
+  <span class="t-prop">animation</span>: <span class="t-val">motIn .28s cubic-bezier(.34,1.56,.64,1) forwards</span>;
+}
+<span class="t-sel">.mot-popup.mot-out</span> {
+  <span class="t-prop">display</span>:   <span class="t-val">block</span>;
+  <span class="t-prop">animation</span>: <span class="t-val">motOut .35s ease forwards</span>;
+}
+
+<span class="t-cmt">/* ── MILESTONE POPUP ──────────────────────────────────────────────────── */</span>
+<span class="t-sel">.ms-popup</span> {
+  <span class="t-prop">display</span>:        <span class="t-val">none</span>;
+  <span class="t-prop">position</span>:       <span class="t-val">fixed</span>;
+  <span class="t-prop">top</span>:            <span class="t-val">16%</span>; <span class="t-prop">left</span>:<span class="t-val">50%</span>;
+  <span class="t-prop">transform</span>:      <span class="t-val">translateX(-50%) scale(.7)</span>;
+  <span class="t-prop">flex-direction</span>: <span class="t-val">column</span>;
+  <span class="t-prop">align-items</span>:    <span class="t-val">center</span>;
+  <span class="t-prop">gap</span>:            <span class="t-val">6px</span>;
+  <span class="t-prop">background</span>:     <span class="t-val">linear-gradient(135deg,#6c63ff,#a89dff)</span>;
+  <span class="t-prop">color</span>:          <span class="t-val">#fff</span>;
+  <span class="t-prop">border-radius</span>:  <span class="t-val">22px</span>;
+  <span class="t-prop">padding</span>:        <span class="t-val">20px 36px 18px</span>;
+  <span class="t-prop">z-index</span>:        <span class="t-val">9998</span>;
+  <span class="t-prop">pointer-events</span>: <span class="t-val">none</span>;
+  <span class="t-prop">box-shadow</span>:     <span class="t-val">0 10px 44px rgba(108,99,255,.5)</span>;
+  <span class="t-prop">text-align</span>:     <span class="t-val">center</span>;
+}
+<span class="t-sel">.ms-em</span>  { <span class="t-prop">font-size</span>:<span class="t-val">40px</span>; <span class="t-prop">line-height</span>:<span class="t-val">1</span>; }
+<span class="t-sel">.ms-msg</span> { <span class="t-prop">font-size</span>:<span class="t-val">18px</span>; <span class="t-prop">font-weight</span>:<span class="t-val">800</span>; <span class="t-prop">letter-spacing</span>:<span class="t-val">-.01em</span>; }
+<span class="t-sel">.ms-popup.ms-in</span>  { <span class="t-prop">display</span>:<span class="t-val">flex</span>; <span class="t-prop">animation</span>:<span class="t-val">msIn .38s cubic-bezier(.34,1.56,.64,1) forwards</span>; }
+<span class="t-sel">.ms-popup.ms-out</span> { <span class="t-prop">display</span>:<span class="t-val">flex</span>; <span class="t-prop">animation</span>:<span class="t-val">msOut .42s ease forwards</span>; }
+
+<span class="t-cmt">/* ════════════════════════════════════════════════════════════════════
+   BACK CARD STYLES
+════════════════════════════════════════════════════════════════════ */</span>
+<span class="t-sel">.back-success-banner</span> {
+  <span class="t-prop">display</span>:       <span class="t-val">flex</span>; <span class="t-prop">align-items</span>:<span class="t-val">center</span>; <span class="t-prop">gap</span>:<span class="t-val">10px</span>;
+  <span class="t-prop">background</span>:    <span class="t-val">var(--gb)</span>;
+  <span class="t-prop">border</span>:        <span class="t-val">1px solid var(--gbr)</span>;
+  <span class="t-prop">border-radius</span>: <span class="t-val">var(--r2)</span>;
+  <span class="t-prop">padding</span>:       <span class="t-val">13px 16px</span>;
+  <span class="t-prop">font-size</span>:     <span class="t-val">15px</span>; <span class="t-prop">font-weight</span>:<span class="t-val">700</span>;
+  <span class="t-prop">color</span>:         <span class="t-val">var(--g)</span>;
+  <span class="t-prop">margin-bottom</span>: <span class="t-val">16px</span>;
+  <span class="t-prop">animation</span>:     <span class="t-val">fadeDown .4s ease</span>;
+}
+<span class="t-sel">.bsb-icon</span> { <span class="t-prop">font-size</span>:<span class="t-val">18px</span>; }
+<span class="t-sel">.bsb-text</span> { <span class="t-prop">flex</span>:<span class="t-val">1</span>; }
+<span class="t-sel">.bsb-streak</span> {
+  <span class="t-prop">background</span>:    <span class="t-val">var(--sk)</span>;
+  <span class="t-prop">border</span>:        <span class="t-val">1px solid var(--skb)</span>;
+  <span class="t-prop">border-radius</span>: <span class="t-val">999px</span>;
+  <span class="t-prop">padding</span>:       <span class="t-val">3px 12px</span>;
+  <span class="t-prop">font-size</span>:     <span class="t-val">13px</span>; <span class="t-prop">font-weight</span>:<span class="t-val">800</span>;
+  <span class="t-prop">color</span>:         <span class="t-val">var(--skt)</span>;
+}
+<span class="t-sel">.bsb-streak.badge-live</span> { <span class="t-prop">box-shadow</span>:<span class="t-val">0 0 10px rgba(255,140,0,.25)</span>; }
+
+<span class="t-sel">.back-section-label</span> {
+  <span class="t-prop">font-size</span>:      <span class="t-val">10px</span>; <span class="t-prop">font-weight</span>:<span class="t-val">700</span>;
+  <span class="t-prop">letter-spacing</span>: <span class="t-val">.12em</span>;
+  <span class="t-prop">text-transform</span>: <span class="t-val">uppercase</span>;
+  <span class="t-prop">color</span>:          <span class="t-val">var(--tm)</span>;
+  <span class="t-prop">margin</span>:         <span class="t-val">14px 0 7px</span>;
+}
+<span class="t-sel">.back-section-label:first-of-type</span> { <span class="t-prop">margin-top</span>:<span class="t-val">0</span>; }
+
+<span class="t-sel">.back-q-box</span> {
+  <span class="t-prop">font-size</span>:    <span class="t-val">clamp(14px,3.5vw,17px)</span>; <span class="t-prop">font-weight</span>:<span class="t-val">600</span>;
+  <span class="t-prop">color</span>:        <span class="t-val">var(--tx)</span>; <span class="t-prop">line-height</span>:<span class="t-val">1.55</span>;
+  <span class="t-prop">background</span>:   <span class="t-val">var(--surf)</span>; <span class="t-prop">border</span>:<span class="t-val">1px solid var(--bd)</span>;
+  <span class="t-prop">border-radius</span>:<span class="t-val">var(--r3)</span>; <span class="t-prop">padding</span>:<span class="t-val">14px 16px</span>;
+}
+
+<span class="t-sel">.back-options-list</span> {
+  <span class="t-prop">display</span>:        <span class="t-val">flex</span>;
+  <span class="t-prop">flex-direction</span>: <span class="t-val">column</span>;
+  <span class="t-prop">gap</span>:            <span class="t-val">8px</span>;
+}
+<span class="t-sel">.back-opt-row</span> {
+  <span class="t-prop">display</span>:       <span class="t-val">flex</span>; <span class="t-prop">align-items</span>:<span class="t-val">center</span>; <span class="t-prop">gap</span>:<span class="t-val">12px</span>;
+  <span class="t-prop">background</span>:    <span class="t-val">var(--surf)</span>;
+  <span class="t-prop">border</span>:        <span class="t-val">1.5px solid var(--bd)</span>;
+  <span class="t-prop">border-radius</span>: <span class="t-val">var(--r3)</span>;
+  <span class="t-prop">padding</span>:       <span class="t-val">11px 14px</span>;
+  <span class="t-prop">font-size</span>:     <span class="t-val">14px</span>; <span class="t-prop">color</span>:<span class="t-val">var(--tx)</span>;
+  <span class="t-prop">opacity</span>:       <span class="t-val">.6</span>;
+}
+<span class="t-sel">.back-opt-row.back-opt-correct</span> {
+  <span class="t-prop">border-color</span>: <span class="t-val">var(--g)</span>;
+  <span class="t-prop">background</span>:   <span class="t-val">var(--gb)</span>;
+  <span class="t-prop">opacity</span>:      <span class="t-val">1</span>; <span class="t-prop">font-weight</span>:<span class="t-val">600</span>;
+  <span class="t-prop">box-shadow</span>:   <span class="t-val">0 0 0 2px var(--gbr)</span>;
+}
+<span class="t-sel">.back-ltr</span> {
+  <span class="t-prop">width</span>:28px; <span class="t-prop">height</span>:28px; <span class="t-prop">min-width</span>:28px;
+  <span class="t-prop">border-radius</span>:7px;
+  <span class="t-prop">background</span>:var(--surf2); <span class="t-prop">border</span>:1px solid var(--bd);
+  <span class="t-prop">display</span>:flex; <span class="t-prop">align-items</span>:center; <span class="t-prop">justify-content</span>:center;
+  <span class="t-prop">font-size</span>:11px; <span class="t-prop">font-weight</span>:800; <span class="t-prop">color</span>:var(--tm); <span class="t-prop">flex-shrink</span>:0;
+}
+<span class="t-sel">.back-opt-correct .back-ltr</span>  { <span class="t-prop">background</span>:var(--gb); <span class="t-prop">border-color</span>:var(--g); <span class="t-prop">color</span>:var(--g); }
+<span class="t-sel">.back-opt-text</span>  { <span class="t-prop">flex</span>:1; }
+<span class="t-sel">.back-opt-tick</span>  { <span class="t-prop">font-size</span>:15px; <span class="t-prop">font-weight</span>:800; <span class="t-prop">color</span>:var(--g); <span class="t-prop">min-width</span>:20px; <span class="t-prop">text-align</span>:center; }
+
+<span class="t-sel">.back-explanation</span> {
+  <span class="t-prop">background</span>:   <span class="t-val">var(--ab)</span>;
+  <span class="t-prop">border-left</span>:  <span class="t-val">3px solid var(--ac)</span>;
+  <span class="t-prop">border-radius</span>:<span class="t-val">0 var(--r3) var(--r3) 0</span>;
+  <span class="t-prop">padding</span>:      <span class="t-val">14px 16px</span>;
+  <span class="t-prop">font-size</span>:    <span class="t-val">clamp(13px,3.2vw,15px)</span>;
+  <span class="t-prop">line-height</span>:  <span class="t-val">1.65</span>;
+  <span class="t-prop">color</span>:        <span class="t-val">var(--tx)</span>;
+}
+
+<span class="t-cmt">/* ════════════════════════════════════════════════════════════════════
+   KEYFRAMES
+════════════════════════════════════════════════════════════════════ */</span>
+<span class="t-at">@keyframes</span> optPop   {0%{transform:scale(1)}40%{transform:scale(1.017)}100%{transform:scale(1)}}
+<span class="t-at">@keyframes</span> optShake {10%,90%{transform:translateX(-2px)}20%,80%{transform:translateX(4px)}30%,50%,70%{transform:translateX(-5px)}40%,60%{transform:translateX(5px)}}
+<span class="t-at">@keyframes</span> fadeDown {from{opacity:0;transform:translateY(-6px)}to{opacity:1;transform:translateY(0)}}
+<span class="t-at">@keyframes</span> motIn    {from{opacity:0;transform:translate(-50%,-50%) scale(.65)}to{opacity:1;transform:translate(-50%,-50%) scale(1)}}
+<span class="t-at">@keyframes</span> motOut   {from{opacity:1;transform:translate(-50%,-50%) scale(1)}to{opacity:0;transform:translate(-50%,-50%) scale(.82)}}
+<span class="t-at">@keyframes</span> msIn     {from{opacity:0;transform:translateX(-50%) scale(.7) translateY(-8px)}to{opacity:1;transform:translateX(-50%) scale(1) translateY(0)}}
+<span class="t-at">@keyframes</span> msOut    {from{opacity:1}to{opacity:0;transform:translateX(-50%) translateY(-8px)}}
+
+<span class="t-cmt">/* ════════════════════════════════════════════════════════════════════
+   MOBILE — Anki sets .mobile on iOS/Android
+════════════════════════════════════════════════════════════════════ */</span>
+<span class="t-sel">.mobile .mcq-card</span>  { <span class="t-prop">padding</span>:<span class="t-val">14px 12px 28px</span>; }
+<span class="t-sel">.mobile .mcq-opt</span>   { <span class="t-prop">padding</span>:<span class="t-val">15px 14px</span>; <span class="t-prop">min-height</span>:<span class="t-val">58px</span>; }
+<span class="t-sel">.mobile .mot-popup</span> { <span class="t-prop">white-space</span>:<span class="t-val">normal</span>; <span class="t-prop">max-width</span>:<span class="t-val">84vw</span>; <span class="t-prop">font-size</span>:<span class="t-val">16px</span>; }
+
+<span class="t-at">@media (max-width: 480px)</span> {
+  <span class="t-sel">.mcq-card</span>   { <span class="t-prop">padding</span>:<span class="t-val">14px 10px 24px</span>; }
+  <span class="t-sel">.mcq-opt</span>    { <span class="t-prop">padding</span>:<span class="t-val">13px 12px</span>; <span class="t-prop">gap</span>:<span class="t-val">10px</span>; }
+  <span class="t-sel">.mot-popup</span>  { <span class="t-prop">white-space</span>:<span class="t-val">normal</span>; <span class="t-prop">max-width</span>:<span class="t-val">84vw</span>; <span class="t-prop">font-size</span>:<span class="t-val">15px</span>; }
+  <span class="t-sel">.ms-popup</span>   { <span class="t-prop">padding</span>:<span class="t-val">16px 24px</span>; }
+}
+<span class="t-sel">::-webkit-scrollbar</span>       { <span class="t-prop">width</span>:<span class="t-val">5px</span>; }
+<span class="t-sel">::-webkit-scrollbar-track</span> { <span class="t-prop">background</span>:<span class="t-val">transparent</span>; }
+<span class="t-sel">::-webkit-scrollbar-thumb</span> { <span class="t-prop">background</span>:<span class="t-val">var(--bd)</span>; <span class="t-prop">border-radius</span>:<span class="t-val">99px</span>; }
+<span class="t-sel">::selection</span>               { <span class="t-prop">background</span>:<span class="t-val">var(--ac)</span>; <span class="t-prop">color</span>:<span class="t-val">#fff</span>; }</pre></div>
+  </div>
+</div>
+
+<!-- ═══════════════ INSTALL GUIDE ═══════════════ -->
+<div>
+  <div class="sec-hdr">
+    <div class="sec-icon si-gold">📋</div>
+    <div>
+      <div class="sec-label">Setup Guide</div>
+      <div class="sec-title">How to Install in Anki</div>
+    </div>
+  </div>
+  <div class="install-box">
+    <div class="step"><div class="step-n">1</div><div class="step-txt">In Anki: <strong>Tools → Manage Note Types</strong> → Add a new note type called <code>MCQ Premium</code>.</div></div>
+    <div class="step"><div class="step-n">2</div><div class="step-txt">Add exactly <strong>7 fields</strong> (case-sensitive): <code>Question</code> · <code>Option1</code> · <code>Option2</code> · <code>Option3</code> · <code>Option4</code> · <code>CorrectOption</code> · <code>Explanation</code></div></div>
+    <div class="step"><div class="step-n">3</div><div class="step-txt">Click <strong>Cards…</strong> → paste Front Template, Back Template, and Styling into their respective sections.</div></div>
+    <div class="step"><div class="step-n">4</div>
+      <div class="step-txt">
+        <strong>⭐ KEY — CorrectOption field:</strong> Enter the <strong>exact text</strong> of the correct answer, copied from one of the Option fields. Example:<br>
+        Option2 = <code>Network Layer</code> → CorrectOption = <code>Network Layer</code><br>
+        This is the same proven logic as your original template.
+      </div>
+    </div>
+    <div class="step"><div class="step-n">5</div><div class="step-txt"><strong>Sounds:</strong> Fully embedded via Web Audio API — <strong>no mp3 files needed</strong>. Works everywhere instantly.</div></div>
+    <div class="step"><div class="step-n">6</div><div class="step-txt">Save and start reviewing. Streak persists across sessions via <code>localStorage</code>.</div></div>
+  </div>
+  <div class="note">⚠️ <strong>CorrectOption must exactly match</strong> the option text. Copy-paste from Option1/2/3/4 to ensure no hidden spaces or formatting differences.</div>
+  <div class="note2">✅ <strong>Sounds work via Web Audio API</strong> — generates tones programmatically. No files, no CDN, no internet. A rising 3-note chime for correct, a descending buzz for wrong. Gracefully silent if Web Audio is unavailable.</div>
+</div>
+
+</div><!-- /wrap -->
+
+<div class="footer">
+  🏆 Premium Anki MCQ Template — Award Edition v3 &nbsp;·&nbsp; Zero dependencies &nbsp;·&nbsp; Embedded sounds &nbsp;·&nbsp; Desktop · AnkiDroid · AnkiMobile · AnkiWeb
+</div>
+
+<!-- ═══════════════════════════════════════════════════════════════════════
+     PAGE JAVASCRIPT (demo + copy buttons only — not part of Anki template)
+═══════════════════════════════════════════════════════════════════════ -->
+<script>
+/* ── DEMO PREVIEW ──────────────────────────────────────────────────── */
+var demoAnswered = false;
+var demoWrong = {};
+
+/* Embedded Web Audio for demo (mirrors Anki template) */
+function demoAudioCtx() {
+  try { return new (window.AudioContext || window.webkitAudioContext)(); } catch(e){return null;}
+}
+function demoCorrectSound() {
+  var ctx = demoAudioCtx(); if(!ctx) return;
+  var t = ctx.currentTime;
+  [[523.25,t,0.18,0.7],[659.25,t+0.13,0.22,0.7],[783.99,t+0.27,0.28,0.7]].forEach(function(p){
+    var o=ctx.createOscillator(), g=ctx.createGain();
+    o.type='sine'; o.frequency.setValueAtTime(p[0],p[1]);
+    g.gain.setValueAtTime(p[3],p[1]); g.gain.exponentialRampToValueAtTime(0.0001,p[1]+p[2]);
+    o.connect(g); g.connect(ctx.destination); o.start(p[1]); o.stop(p[1]+p[2]+0.05);
+  });
+}
+function demoWrongSound() {
+  var ctx = demoAudioCtx(); if(!ctx) return;
+  var t = ctx.currentTime;
+  [[220,t,0.15,0.55],[174,t+0.12,0.20,0.45]].forEach(function(p){
+    var o=ctx.createOscillator(), g=ctx.createGain();
+    o.type='sawtooth'; o.frequency.setValueAtTime(p[0],p[1]);
+    g.gain.setValueAtTime(p[3],p[1]); g.gain.exponentialRampToValueAtTime(0.0001,p[1]+p[2]);
+    o.connect(g); g.connect(ctx.destination); o.start(p[1]); o.stop(p[1]+p[2]+0.05);
+  });
+}
+
+function demoClick(el, isCorrect) {
+  if (demoAnswered) return;
+  var idx = Array.from(el.parentElement.children).indexOf(el);
+  if (demoWrong[idx]) return;
+
+  if (isCorrect) {
+    demoAnswered = true;
+    el.classList.add('st-correct', 'disabled');
+    el.querySelector('.opt-ico').textContent = '✓';
+    /* disable others */
+    Array.from(document.getElementById('demo-opts').children).forEach(function(o, i) {
+      if (i !== idx) { o.classList.add('disabled'); }
+    });
+    var n = parseInt(document.getElementById('demo-sn').textContent) + 1;
+    document.getElementById('demo-sn').textContent = n;
+    document.getElementById('demo-hint').textContent = '✅ Correct! Amazing!';
+    document.getElementById('demo-hint').className = 'mcq-hint h-ok';
+    demoCorrectSound();
+    /* reset after 2.5s for demo replayability */
+    setTimeout(function() {
+      demoAnswered = false; demoWrong = {};
+      Array.from(document.getElementById('demo-opts').children).forEach(function(o) {
+        o.classList.remove('st-correct','st-wrong','disabled');
+        o.querySelector('.opt-ico').textContent = '';
+      });
+      document.getElementById('demo-hint').textContent = 'Tap an option to answer';
+      document.getElementById('demo-hint').className = 'mcq-hint';
+    }, 2500);
+  } else {
+    demoWrong[idx] = true;
+    el.classList.add('st-wrong','disabled');
+    el.querySelector('.opt-ico').textContent = '✗';
+    document.getElementById('demo-hint').textContent = '❌ Incorrect — keep trying!';
+    document.getElementById('demo-hint').className = 'mcq-hint h-bad';
+    demoWrongSound();
+    setTimeout(function() {
+      el.classList.remove('st-wrong');
+      el.classList.add('st-wrong-final');
+    }, 450);
+  }
+}
+
+/* ── TAB SWITCHER ─────────────────────────────────────────────────── */
+function switchTab(id, el) {
+  document.querySelectorAll('.ptab').forEach(function(t){ t.classList.remove('on'); });
+  document.querySelectorAll('.ppane').forEach(function(p){ p.classList.remove('on'); });
+  el.classList.add('on');
+  document.getElementById('tab-'+id).classList.add('on');
+}
+
+/* ── COPY BUTTON ──────────────────────────────────────────────────── */
+function copyEl(id, btn) {
+  var pre = document.getElementById(id);
+  if (!pre) return;
+  var text = pre.innerText || pre.textContent;
+  if (navigator.clipboard && navigator.clipboard.writeText) {
+    navigator.clipboard.writeText(text).then(function() { flashCopy(btn); }).catch(function() { fallbackCopy(text, btn); });
+  } else { fallbackCopy(text, btn); }
+}
+function fallbackCopy(text, btn) {
+  var ta = document.createElement('textarea');
+  ta.style.cssText = 'position:fixed;opacity:0;top:0;left:0;';
+  ta.value = text; document.body.appendChild(ta); ta.select();
+  try { document.execCommand('copy'); flashCopy(btn); } catch(e){}
+  document.body.removeChild(ta);
+}
+function flashCopy(btn) {
+  btn.classList.add('ok'); btn.textContent = '✓ Copied!';
+  setTimeout(function(){ btn.classList.remove('ok'); btn.textContent = '⧉ Copy'; }, 2200);
+}
+</script>
+</body>
+</html>
